@@ -1,6 +1,6 @@
 import { Breadcrumb } from "react-bootstrap";
 
-function App() {
+function Index() {
   return (
     <div className="App">
       <h1>로그인페이지</h1>
@@ -13,4 +13,4 @@ function App() {
   );
 }
 
-export default App;
+export default Index;
