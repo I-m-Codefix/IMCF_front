@@ -1,11 +1,14 @@
+import { Breadcrumb } from "react-bootstrap";
+
 function App() {
   return (
     <div className="App">
-      <div>
-        IMCF 프로젝트 시작<br/>
-        와타시가 작성
-      </div>
-      <button type="button" class="btn btn-danger">버튼 예제</button>
+      <h1>로그인페이지</h1>
+      <Breadcrumb>
+        <Breadcrumb.Item href="#">메인페이지</Breadcrumb.Item>
+        <Breadcrumb.Item href="#">회원가입</Breadcrumb.Item>
+        <Breadcrumb.Item active>카카오로그인</Breadcrumb.Item>
+      </Breadcrumb>
     </div>
   );
 }
