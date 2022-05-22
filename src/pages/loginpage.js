@@ -5,8 +5,8 @@ function Loginpage() {
         <div>
             Loginpage
             <Breadcrumb>
-                <Breadcrumb.Item href="#">메인페이지</Breadcrumb.Item>
-                <Breadcrumb.Item href="#">회원가입</Breadcrumb.Item>
+                <Breadcrumb.Item href="/main">메인페이지</Breadcrumb.Item>
+                <Breadcrumb.Item href="/signuppage">회원가입</Breadcrumb.Item>
                 <Breadcrumb.Item active>카카오로그인</Breadcrumb.Item>
             </Breadcrumb>
         </div>

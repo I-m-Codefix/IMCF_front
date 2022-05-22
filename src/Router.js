@@ -1,10 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/index";
-import Notfound from "./pages/notfound";
+import Index from "./index";
 import Loginpage from "./pages/loginpage";
+import Notfound from "./pages/notfound";
 import Mainpage from "./pages/mainpage";
 import Usermypage from "./pages/usermypage";
-import Contentprovidermypage from "./pages/contentprovidermypage";
 import Changepwdapage from "./pages/changepwdapage";
 import Signuppage from "./pages/signuppage";
 import Modifyinformationpage from "./pages/modifyinformationpage";
@@ -22,12 +21,10 @@ function Router() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/login" element={<Loginpage />} />
+                <Route path="/" element={<Loginpage />} />
                 <Route path="/signuppage" element={<Signuppage />} />
                 <Route path="/main" element={<Mainpage />} />
                 <Route path="/usermypage" element={<Usermypage />} />
-                <Route path="/contentprovidermypage" element={<Contentprovidermypage />} />
                 <Route path="/changepwdapage" element={<Changepwdapage />} />
                 <Route path="/modifyinformationpage" element={<Modifyinformationpage />} />
                 <Route path="/memberwithdrawalpage" element={<Memberwithdrawalpage />} />
