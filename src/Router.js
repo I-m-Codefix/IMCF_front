@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./index";
 import Loginpage from "./pages/loginpage";
 import Notfound from "./pages/notfound";
 import Mainpage from "./pages/mainpage";
