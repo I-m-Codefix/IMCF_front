@@ -1,0 +1,9 @@
+build/*
+node_modules/*
+package-lock.json
+package.json
+Readme.md
+public/*
+인준이를 위한 코딩가이드.txt
+src/assets/*
+src/styles/*

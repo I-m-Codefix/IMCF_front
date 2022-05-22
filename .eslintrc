@@ -1,0 +1,16 @@
+{
+    "parserOptions": {
+
+    },
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "extends": [
+        "react-app",
+    ],
+    "plugins": [],
+    "rules": {
+        "no-unused-expressions": "off",
+    }
+}
