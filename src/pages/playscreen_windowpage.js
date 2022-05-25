@@ -5,11 +5,10 @@ function Playscreen_windowpage() {
         <div>
             Playscreen_windowpage
             <Breadcrumb>
-                <Breadcrumb.Item href="#">메인페이지</Breadcrumb.Item>
-                <Breadcrumb.Item href="#">마이페이지</Breadcrumb.Item>
-                <Breadcrumb.Item href="#">관련영화</Breadcrumb.Item>
-                <Breadcrumb.Item href="#">뒤로 가기</Breadcrumb.Item>
-                <Breadcrumb.Item href="#">전체화면모드</Breadcrumb.Item>
+                <Breadcrumb.Item href="/main">메인페이지</Breadcrumb.Item>
+                <Breadcrumb.Item href="/usermypage">마이페이지</Breadcrumb.Item>
+                <Breadcrumb.Item href="/moviedescriptionpage">뒤로 가기</Breadcrumb.Item>
+                <Breadcrumb.Item href="/playscreen_fullpage">전체화면모드</Breadcrumb.Item>
             </Breadcrumb>
         </div>
     );

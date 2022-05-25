@@ -3,14 +3,11 @@ import Loginpage from "./pages/loginpage";
 import Notfound from "./pages/notfound";
 import Mainpage from "./pages/mainpage";
 import Usermypage from "./pages/usermypage";
-import Changepwdapage from "./pages/changepwdapage";
 import Signuppage from "./pages/signuppage";
 import Modifyinformationpage from "./pages/modifyinformationpage";
 import Memberwithdrawalpage from "./pages/memberwithdrawalpage";
 import Cpapage from "./pages/cpapage";
 import Moviedescriptionpage from "./pages/moviedescriptionpage";
-import Moviereviewpage from "./pages/moviereviewpage";
-import Moviealgopage from "./pages/moviealgopage";
 import Movieapplicationpage from "./pages/movieapplicationpage";
 import Liveapplicationpage from "./pages/liveapplicationpage";
 import Playscreen_fullpage from "./pages/playscreen_fullpage";
@@ -24,13 +21,10 @@ function Router() {
                 <Route path="/signuppage" element={<Signuppage />} />
                 <Route path="/main" element={<Mainpage />} />
                 <Route path="/usermypage" element={<Usermypage />} />
-                <Route path="/changepwdapage" element={<Changepwdapage />} />
                 <Route path="/modifyinformationpage" element={<Modifyinformationpage />} />
                 <Route path="/memberwithdrawalpage" element={<Memberwithdrawalpage />} />
                 <Route path="/cpapage" element={<Cpapage />} />
                 <Route path="/moviedescriptionpage" element={<Moviedescriptionpage />} />
-                <Route path="/moviereviewpage" element={<Moviereviewpage />} />
-                <Route path="/moviealgopage" element={<Moviealgopage />} />
                 <Route path="/movieapplicationpage" element={<Movieapplicationpage />} />
                 <Route path="/liveapplicationpage" element={<Liveapplicationpage />} />
                 <Route path="/playscreen_fullpage" element={<Playscreen_fullpage />} />
