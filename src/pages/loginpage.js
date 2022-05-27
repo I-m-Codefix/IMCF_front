@@ -1,5 +1,9 @@
-import { Breadcrumb } from "react-bootstrap";
-import ButtonComponent from "../components/testComponents";
+import { Breadcrumb, FormControl, InputGroup } from "react-bootstrap";
+import ButtonComponent from "../components/buttoncomponent";
+import InputGroupComponent from "../components/inputgroupcomponent";
+import MoviePosterComponent from "../components/moviepostercomponent";
+
+import "../styles/_variables.scss";
 
 function Loginpage() {
     return (
@@ -10,10 +14,14 @@ function Loginpage() {
                 <Breadcrumb.Item href="/signuppage">회원가입</Breadcrumb.Item>
                 <Breadcrumb.Item active>카카오로그인</Breadcrumb.Item>
             </Breadcrumb>
-            <ButtonComponent customText="이인준" />
-            <ButtonComponent customText="바보" />
-            <ButtonComponent customText="똥멍청이" />
-            <ButtonComponent customText="해파리" />
+            <InputGroupComponent props = "ID"></InputGroupComponent>
+            <InputGroupComponent props = "PWD"></InputGroupComponent>
+            <ButtonComponent props="Login" /><br/>
+            <ButtonComponent props="회원가입" /><br/>
+            <ButtonComponent props="카카오로그인" />
+            
+            {/* <MoviePosterComponent props="asdasd" title ="asssaa"></MoviePosterComponent> */}
+
         </div>
     );
 }

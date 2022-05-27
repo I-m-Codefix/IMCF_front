@@ -4,6 +4,29 @@
 **/
 
 // base_color
-$main-color: #22223B;
-$serve-color: #9A8C98;
-$font-color: #F2E9E4;
+$main_color: #22223B;
+$serve_color: #9A8C98;
+$font_color: #F2E9E4;
+$extra_color: #FFFA7E;
+
+
+// :export{
+//     main_color:   $main_color;
+//     serve_color:  $serve_color;
+//     font_color:   $font_color;
+//     extra_color:  $extra_color;
+// }
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited, .btn-primary:focus {
+    background-color: $extra_color;
+    border: none;
+    outline: none;
+    box-shadow: none !important;
+}
+
+input:focus{
+    box-shadow: none !important;
+}

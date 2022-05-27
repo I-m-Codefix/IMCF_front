@@ -20,7 +20,7 @@ function Router() {
                 <Route path="/" element={<Loginpage />} />
                 <Route path="signup" element={<Signuppage />} />
                 <Route path="main" element={<Mainpage />} />
-                <Route path="/user" element={<Usermypage />} />
+                <Route path="user" element={<Usermypage />} />
                 <Route path="delete" element={<Memberwithdrawalpage />} />
                 <Route path="modify" element={<Modifyinformationpage />} />
                 <Route path="cotentprovide" element={<Cpapage />} />
