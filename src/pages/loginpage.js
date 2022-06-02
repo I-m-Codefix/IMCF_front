@@ -17,7 +17,8 @@ const cardStyle = {
     alignItems: "center",
     justifyContent: "center",
     width: "25%",
-    padding: "50px"
+    padding: "50px",
+    backgroundColor: "rgba(171, 171, 171, 0.5)",
 };
 
 const rowStyle = {
