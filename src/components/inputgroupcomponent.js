@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormControl, InputGroup } from "react-bootstrap";
-import _variables from "../styles/_variables.scss";
+import "../styles/Components/inputComponent.scss"
 
 export default function InputGroupComponent({ props }) {
     const label = props;

@@ -3,8 +3,6 @@ import ButtonComponent from "../components/buttoncomponent";
 import InputGroupComponent from "../components/inputgroupcomponent";
 import MoviePosterComponent from "../components/moviepostercomponent";
 
-import "../styles/_variables.scss";
-
 function Loginpage() {
     return (
         <div>
@@ -16,7 +14,7 @@ function Loginpage() {
             </Breadcrumb>
             <InputGroupComponent props = "ID"></InputGroupComponent>
             <InputGroupComponent props = "PWD"></InputGroupComponent>
-            <ButtonComponent props="Login" /><br/>
+            <ButtonComponent props="로그인" /><br/>
             <ButtonComponent props="회원가입" /><br/>
             <ButtonComponent props="카카오로그인" />
             

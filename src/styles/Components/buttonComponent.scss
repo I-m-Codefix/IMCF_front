@@ -1,0 +1,11 @@
+@import "../_variables.scss";
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited, .btn-primary:focus {
+    background-color: $extra_color;
+    border: none;
+    outline: none;
+    box-shadow: none !important;
+}
