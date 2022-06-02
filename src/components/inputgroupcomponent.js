@@ -1,4 +1,3 @@
-import React from 'react';
 import { FormControl, InputGroup } from "react-bootstrap";
 import "../styles/Components/inputComponent.scss"
 
