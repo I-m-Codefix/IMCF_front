@@ -24,9 +24,23 @@ const cardStyle = {
 const rowStyle = {
     display: "flex",
     width: "100%",
-    justifyContent: "space-between",
     flexDirection: "row",
-    padding: "0 50px",
+    justifyContent: "space-around",
+    padding: "10px 0",
+}
+
+const inputboxStyle = {
+    display: "flex",
+    flexDirection: "column",
+    width: "70%",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "0 10px"
+}
+
+const buttonboxStyle = {
+    display: "flex",
+    width: "30%",
 }
 
 const overlayStyle = {
@@ -63,11 +77,13 @@ function Loginpage() {
                     </Breadcrumb>
                     <Card style={cardStyle}>
                         <div style={rowStyle}>
-                            <div>
+                            <div style={inputboxStyle}>
                                 <InputGroupComponent props = "ID"></InputGroupComponent>
                                 <InputGroupComponent props = "PWD"></InputGroupComponent>
                             </div>
-                            <ButtonComponent props="로그인" /><br/>
+                            <div style={buttonboxStyle}>
+                                <ButtonComponent props="로그인" /><br/>
+                            </div>
                         </div>
                         <div style={rowStyle}>
                             <ButtonComponent props="회원가입" /><br/>

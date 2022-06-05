@@ -1,14 +1,16 @@
 import { Button } from "react-bootstrap";
 import "../styles/Components/buttonComponent.scss";
 
-export default function ButtonComponent({ props }) {
-    const label = props;
-    // const css = {
-    //     color:_variables.extra_color
-    // }
+const divStyle = {
+    width: "100%",
+    height: "100%",
+    padding: "0 10px"
+}
+
+export default function ButtonComponent({ props}) {
     return (
-        <div>
-            <Button> {label} </Button>
+        <div style={divStyle}>
+            <Button> {props} </Button>
         </div>
     );
 }
