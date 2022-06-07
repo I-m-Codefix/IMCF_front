@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# 본 프로젝트는 CRA(Create Ract App)을 통해 작성됨.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+이 프로젝트는 강원대학교 산학협력과제로 IMCF 팀의 프로젝트입니다.
 
-## Available Scripts
+## 사용 가능한 스크립트
 
-In the project directory, you can run:
+본 프로젝트에서는 해당 스크립트를 사용할 수 있음:
+
+### `npm run dev`
+
+본 프로젝트를 development 모드로 실행함.
+열기: [http://localhost:5000](http://localhost:5000)
+
+코드 수정 사항이 실시간으로 변경되는 것을 확인할 수 있음.
+에러 사항은 콘솔을 통해 확인 가능.
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+SSR을 통해 구현할 경우 Production 서버로 실행할 수 있도록 할 예정.
+현재는 `npm run dev`와 동일한 동작을 함.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+테스트 실행 모드.
+테스트 모드에 관한 정보 [running tests](https://facebook.github.io/create-react-app/docs/running-tests)
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+프로젝트를 Production 모드로 `build`함.
+해쉬를 통해 캐싱된 파일들을 배포할 수 있음.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+배포에 관한 정보. [deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
 ### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**`eject`를 실행할 경우 이전 상태로 파일을 되돌릴 수 없으니 주의!!!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+이 프로젝트는 CRA로 작성되었기 때문에 내부 설정 파일이 숨겨져 있음.
+`eject` 스크립트로 세부 내용을 수정할 수 있지만 다시 숨김으로 설정할 수 없음.
