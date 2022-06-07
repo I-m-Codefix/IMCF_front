@@ -11,10 +11,10 @@ const btnStyle = {
     color: "black"
 }
 
-export default function ButtonComponent({ props}) {
+export default function ButtonComponent(props) {
     return (
         <div style={divStyle}>
-            <Button style={btnStyle}> {props} </Button>
+            <Button style={btnStyle}> {props.text} </Button>
         </div>
     );
 }

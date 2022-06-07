@@ -1,14 +1,23 @@
 import Header from "./header";
-import Footer from "./footer";
+
+const layoutStyle = {
+    width: "100%",
+    height: "100%"
+}
+
+const mainStyle = {
+    width: "100%",
+    height: "calc(100% - 100px)",
+    background: "#22223B"
+}
 
 export default function LayoutComponent(props) {
     return (
-        <div>
+        <div style={layoutStyle}>
             <Header />
-                <main>
-                    {props.children}
-                </main>
-            <Footer />
+            <main style={mainStyle}>
+                {props.children}
+            </main>
         </div>
     )
 }

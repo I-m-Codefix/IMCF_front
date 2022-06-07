@@ -95,8 +95,8 @@ function Signuppage() {
                             </div>
                         </div>
                         <div style={buttonwrapper}>
-                            <ButtonComponent props="뒤로가기" />
-                            <ButtonComponent props="다음" />
+                            <ButtonComponent text="뒤로가기" />
+                            <ButtonComponent text="다음" />
                         </div>
                     </Card>
                 </div>

@@ -87,16 +87,16 @@ function Loginpage() {
                     <Card style={cardStyle}>
                         <div style={rowStyle}>
                             <div style={inputboxStyle}>
-                                <InputGroupComponent props = "ID"></InputGroupComponent>
-                                <InputGroupComponent props = "PWD"></InputGroupComponent>
+                                <InputGroupComponent placeholder = "ID"></InputGroupComponent>
+                                <InputGroupComponent placeholder = "PWD"></InputGroupComponent>
                             </div>
                             <div style={buttonboxStyle}>
-                                <ButtonComponent props="로그인" /><br/>
+                                <ButtonComponent text="로그인" /><br/>
                             </div>
                         </div>
                         <div style={colStyle}>
-                            <ButtonComponent props="회원가입" /><br/>
-                            <ButtonComponent props="카카오로그인" />
+                            <ButtonComponent text="회원가입" /><br/>
+                            <ButtonComponent text="카카오로그인" />
                         </div>
                     </Card>
                 </div>
