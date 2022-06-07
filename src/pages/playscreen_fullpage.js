@@ -5,7 +5,7 @@ function Playscreen_fullpage() {
         <div>
             Playscreen_fullpage
             <Breadcrumb>
-                <Breadcrumb.Item href="/moviedescriptionpage">뒤로 가기</Breadcrumb.Item>
+                <Breadcrumb.Item href="/infomovie">뒤로 가기</Breadcrumb.Item>
                 <Breadcrumb.Item href="/playscreen_windowpage">창모드</Breadcrumb.Item>
             </Breadcrumb>
         </div>
