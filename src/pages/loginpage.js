@@ -18,7 +18,8 @@ const cardStyle = {
     justifyContent: "center",
     width: "25%",
     padding: "50px",
-    backgroundColor: "rgba(171, 171, 171, 0.5)",
+    background: "rgba(154, 140, 152, 0.8)",
+    borderRadius: "50px",
 };
 
 const rowStyle = {
@@ -27,6 +28,14 @@ const rowStyle = {
     flexDirection: "row",
     justifyContent: "space-around",
     padding: "10px 0",
+}
+
+const colStyle = {
+    display: "flex",
+    width: "100%",
+    flexDirection: "column",
+    justifyContent: "space-around",
+    padding: "10px 25%",
 }
 
 const inputboxStyle = {
@@ -46,7 +55,7 @@ const buttonboxStyle = {
 const overlayStyle = {
     width: "100%",
     height: "100%",
-    background: "rgba(0, 0, 0, 0.75)",
+    background: "rgba(0, 0, 0, 0.8)",
 }
 
 const wrapperStyle = {
@@ -72,7 +81,7 @@ function Loginpage() {
                     Loginpage
                     <Breadcrumb>
                         <Breadcrumb.Item href="/main">메인페이지</Breadcrumb.Item>
-                        <Breadcrumb.Item href="/signuppage">회원가입</Breadcrumb.Item>
+                        <Breadcrumb.Item href="/signup">회원가입</Breadcrumb.Item>
                         <Breadcrumb.Item active>카카오로그인</Breadcrumb.Item>
                     </Breadcrumb>
                     <Card style={cardStyle}>
@@ -85,7 +94,7 @@ function Loginpage() {
                                 <ButtonComponent props="로그인" /><br/>
                             </div>
                         </div>
-                        <div style={rowStyle}>
+                        <div style={colStyle}>
                             <ButtonComponent props="회원가입" /><br/>
                             <ButtonComponent props="카카오로그인" />
                         </div>

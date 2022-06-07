@@ -7,10 +7,14 @@ const divStyle = {
     padding: "0 10px"
 }
 
+const btnStyle = {
+    color: "black"
+}
+
 export default function ButtonComponent({ props}) {
     return (
         <div style={divStyle}>
-            <Button> {props} </Button>
+            <Button style={btnStyle}> {props} </Button>
         </div>
     );
 }
