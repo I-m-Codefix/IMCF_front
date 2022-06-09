@@ -1,7 +1,8 @@
-import { Breadcrumb, Container, Row, Col, Card } from "react-bootstrap";
+import { Breadcrumb, Container, Row, Col, Card, Navbar, Nav } from "react-bootstrap";
 import LayoutComponent from "../components/layoutComponent";
 import PosterComponent from "../components/postercomponent";
 import ButtonComponent from "../components/buttoncomponent";
+import InputGroupComponent from "../components/inputgroupcomponent";
 
 const mainStyle = {
     display: "flex",
@@ -85,8 +86,16 @@ function Moviedescriptionpage() {
                         </div>
                     </div>
                     <div style={chageBox}>
-                        <ButtonComponent text="리뷰작성"/>
-                        <ButtonComponent text="관련영화"/>
+                        <Navbar variant="dark">
+                            <Container>
+                                <Nav.Link>리뷰 작성</Nav.Link>
+                                <Nav.Link>관련 영화</Nav.Link>
+                            </Container>
+                        </Navbar>
+                    </div>
+                    <div style={buttonwrapper} >
+                        <InputGroupComponent />
+                        <ButtonComponent text="입력" />
                     </div>
                     <div style={buttonwrapper}>
                         <ButtonComponent text="뒤로가기" />
