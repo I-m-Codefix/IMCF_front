@@ -78,12 +78,6 @@ function Loginpage() {
             <div style={overlayStyle}>
                 <div style={wrapperStyle}>
                     <img src={logo} style={logoStyle} />
-                    Loginpage
-                    <Breadcrumb>
-                        <Breadcrumb.Item href="/main">메인페이지</Breadcrumb.Item>
-                        <Breadcrumb.Item href="/signup">회원가입</Breadcrumb.Item>
-                        <Breadcrumb.Item active>카카오로그인</Breadcrumb.Item>
-                    </Breadcrumb>
                     <Card style={cardStyle}>
                         <div style={rowStyle}>
                             <div style={inputboxStyle}>

@@ -40,14 +40,6 @@ function Mainpage() {
                     </Row>
                 </Container>
             </div>
-            <div>
-                Mainpage
-                <Breadcrumb>
-                    <Breadcrumb.Item href="/main">메인페이지</Breadcrumb.Item>
-                    <Breadcrumb.Item href="/user">마이페이지</Breadcrumb.Item>
-                    <Breadcrumb.Item href="/infomovie">영화설명</Breadcrumb.Item>
-                </Breadcrumb>
-            </div>
         </LayoutComponent>
     );
 }

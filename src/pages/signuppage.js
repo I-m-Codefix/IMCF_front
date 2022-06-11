@@ -68,11 +68,6 @@ function Signuppage() {
         <div style={bgStyle}>
             <div style={overlayStyle}>
                 <div style={wrapperStyle}>
-                    Signuppage
-                    <Breadcrumb>
-                        <Breadcrumb.Item href="/">뒤로 가기</Breadcrumb.Item>
-                        <Breadcrumb.Item href="/">확인</Breadcrumb.Item>
-                    </Breadcrumb>
                     <Card style={cardStyle}>
                         <div style={inputwrapper}>
                             <label style={labelStyle}>아이디</label>

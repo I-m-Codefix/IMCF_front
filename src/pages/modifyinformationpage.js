@@ -103,15 +103,6 @@ function Modifyinformationpage() {
                     </div>
                 </Card>
             </div >
-            <div>
-                Modifyinformationpage
-                <Breadcrumb>
-                    <Breadcrumb.Item href="/main">메인페이지</Breadcrumb.Item>
-                    <Breadcrumb.Item href="/user">마이페이지</Breadcrumb.Item>
-                    <Breadcrumb.Item href="/user">뒤로 가기</Breadcrumb.Item>
-                    <Breadcrumb.Item href="/user">확인</Breadcrumb.Item>
-                </Breadcrumb>
-            </div>
         </LayoutComponent >
     );
 }
