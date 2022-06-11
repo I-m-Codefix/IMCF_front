@@ -8,13 +8,16 @@ const divStyle = {
 }
 
 const btnStyle = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     color: "black"
 }
 
-export default function ButtonComponent(props) {
+export default function ButtonComponent({ btn_text, btn_link }) {
     return (
         <div style={divStyle}>
-            <Button style={btnStyle}> {props.text} </Button>
+            <Button style={btnStyle} href={btn_link}> {btn_text} </Button>
         </div>
     );
 }

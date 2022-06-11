@@ -91,7 +91,7 @@ function Loginpage() {
                                 <InputGroupComponent placeholder = "PWD"></InputGroupComponent>
                             </div>
                             <div style={buttonboxStyle}>
-                                <ButtonComponent text="로그인" /><br/>
+                                <ButtonComponent text="로그인" href="/main" /><br/>
                             </div>
                         </div>
                         <div style={colStyle}>
