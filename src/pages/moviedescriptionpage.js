@@ -95,11 +95,11 @@ function Moviedescriptionpage() {
                     </div>
                     <div style={buttonwrapper} >
                         <InputGroupComponent />
-                        <ButtonComponent text="입력" />
+                        <ButtonComponent btn_text="입력" />
                     </div>
                     <div style={buttonwrapper}>
-                        <ButtonComponent text="뒤로가기" />
-                        <ButtonComponent text="확인" />
+                        <ButtonComponent btn_text="뒤로가기" />
+                        <ButtonComponent btn_text="확인" />
                     </div>
                 </Card>
             </div>

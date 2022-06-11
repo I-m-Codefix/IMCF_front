@@ -74,13 +74,13 @@ function Modifyinformationpage() {
                     <div style={profile}>
                         <div style={thumbStyle} />
                         <div style={changeBox}>
-                            <ButtonComponent text="프로필 사진변경" />
+                            <ButtonComponent btn_text="프로필 사진변경" />
                         </div>
                     </div>
                     <div style={changeBox}>
                         <div style={nameStyle}>이름</div>
                         <InputGroupComponent />
-                        <ButtonComponent text="중복확인" />
+                        <ButtonComponent btn_text="중복확인" />
                     </div>
                     <div style={changeBox}>
                         <label style={labelStyle}>비밀번호 변경</label>
@@ -98,8 +98,8 @@ function Modifyinformationpage() {
                         <InputGroupComponent />
                     </div>
                     <div style={buttonwrapper}>
-                        <ButtonComponent text="뒤로가기" />
-                        <ButtonComponent text="확인" />
+                        <ButtonComponent btn_text="뒤로가기" />
+                        <ButtonComponent btn_text="확인" />
                     </div>
                 </Card>
             </div >

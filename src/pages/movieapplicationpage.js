@@ -58,8 +58,8 @@ function Movieapplicationpage() {
                         <InputGroupComponent />
                     </div>
                     <div style={buttonwrapper}>
-                        <ButtonComponent text="뒤로가기" />
-                        <ButtonComponent text="확인" />
+                        <ButtonComponent btn_text="뒤로가기" />
+                        <ButtonComponent btn_text="확인" />
                     </div>
                 </Card>
             </div>

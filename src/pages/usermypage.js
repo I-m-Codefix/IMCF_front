@@ -58,20 +58,19 @@ function Usermypage() {
                         <div style={nameStyle}>이름</div>
                     </div>
                     <div style={request}>
-                        <ButtonComponent text="개인 정보 수정" />
-                        <ButtonComponent text="컨텐츠 제공자 신청" />
+                        <ButtonComponent btn_text="개인 정보 수정" btn_link="/modify" />
+                        <ButtonComponent btn_text="컨텐츠 제공자 신청" btn_link="/contentprovide" />
                     </div>
                     <div style={request}>
-                        <ButtonComponent text="영화 등록 신청" />
-                        <ButtonComponent text="라이브 공연 신청" />
+                        <ButtonComponent btn_text="영화 등록 신청" btn_link="/registmovie" />
+                        <ButtonComponent btn_text="라이브 공연 신청" btn_link="/registlive" />
                     </div>
                     <div style={request}>
-                        <ButtonComponent text="로그아웃" />
-                        <ButtonComponent text="회원탈퇴" />
+                        <ButtonComponent btn_text="로그아웃" btn_link="/" />
+                        <ButtonComponent btn_text="회원탈퇴" btn_link="/delete" />
                     </div>
                     <div style={request}>
-                        <ButtonComponent text="뒤로가기" />
-                        <ButtonComponent text="확인" />
+                        <ButtonComponent btn_text="뒤로가기" btn_link="/main"/>
                     </div>
                 </Card>
             </div>
