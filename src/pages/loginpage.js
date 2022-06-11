@@ -91,12 +91,12 @@ function Loginpage() {
                                 <InputGroupComponent placeholder = "PWD"></InputGroupComponent>
                             </div>
                             <div style={buttonboxStyle}>
-                                <ButtonComponent text="로그인" href="/main" /><br/>
+                                <ButtonComponent btn_text="로그인" btn_link="/main" /><br/>
                             </div>
                         </div>
                         <div style={colStyle}>
-                            <ButtonComponent text="회원가입" /><br/>
-                            <ButtonComponent text="카카오로그인" />
+                            <ButtonComponent btn_text="회원가입" /><br/>
+                            <ButtonComponent btn_text="카카오로그인" />
                         </div>
                     </Card>
                 </div>
