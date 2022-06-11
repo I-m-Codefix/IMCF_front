@@ -82,7 +82,7 @@ function Usermypage() {
                     <Breadcrumb.Item href="/modify">개인정보 수정</Breadcrumb.Item>
                     <Breadcrumb.Item href="/registmovie">영화등록 신청</Breadcrumb.Item>
                     <Breadcrumb.Item href="/registlive">라이브공연신청 신청</Breadcrumb.Item>
-                    <Breadcrumb.Item href="/cotentprovide">컨텐츠제공자 신청</Breadcrumb.Item>
+                    <Breadcrumb.Item href="/contentprovide">컨텐츠제공자 신청</Breadcrumb.Item>
                     <Breadcrumb.Item href="/">로그아웃</Breadcrumb.Item>
                     <Breadcrumb.Item href="/delete">회원탈퇴</Breadcrumb.Item>
                     <Breadcrumb.Item href="/main">뒤로 가기</Breadcrumb.Item>

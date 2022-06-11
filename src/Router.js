@@ -23,7 +23,7 @@ function Router() {
                 <Route path="user" element={<Usermypage />} />
                 <Route path="delete" element={<Memberwithdrawalpage />} />
                 <Route path="modify" element={<Modifyinformationpage />} />
-                <Route path="cotentprovide" element={<Cpapage />} />
+                <Route path="contentprovide" element={<Cpapage />} />
                 <Route path="infomovie" element={<Moviedescriptionpage />} />
                 <Route path="registmovie" element={<Movieapplicationpage />} />
                 <Route path="registlive" element={<Liveapplicationpage />} />

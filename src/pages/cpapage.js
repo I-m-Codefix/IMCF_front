@@ -68,8 +68,8 @@ function Cpapage() {
                 <InputGroupComponent />
             </div>
             <div style={buttonwrapper}>
-                <ButtonComponent btn_text="뒤로가기" />
-                <ButtonComponent btn_text="확인" />
+                <ButtonComponent btn_text="뒤로가기" btn_link="/user" />
+                <ButtonComponent btn_text="확인" btn_link="/user" />
             </div>
             </Card>
         </div>

@@ -95,8 +95,8 @@ function Signuppage() {
                             </div>
                         </div>
                         <div style={buttonwrapper}>
-                            <ButtonComponent btn_text="뒤로가기" />
-                            <ButtonComponent btn_text="다음" />
+                            <ButtonComponent btn_text="뒤로가기" btn_link="/"/>
+                            <ButtonComponent btn_text="확인" btn_link="/"/>
                         </div>
                     </Card>
                 </div>
