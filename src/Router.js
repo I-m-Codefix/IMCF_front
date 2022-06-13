@@ -12,6 +12,7 @@ import Liveapplicationpage from "./pages/liveapplicationpage";
 import Playscreen_fullpage from "./pages/playscreen_fullpage";
 import Playscreen_windowpage from "./pages/playscreen_windowpage";
 import Memberwithdrawalpage from "./pages/memberwithdrawalpage";
+import Test from "./pages/test"
 
 function Router() {
     return (
@@ -30,6 +31,8 @@ function Router() {
                 <Route path="playscreen_fullpage" element={<Playscreen_fullpage />} />
                 <Route path="playscreen_windowpage" element={<Playscreen_windowpage />} />
                 <Route path="*" element={<Notfound />} />
+
+                <Route path="test" element={<Test />} />
             </Routes>
         </BrowserRouter>
     );
