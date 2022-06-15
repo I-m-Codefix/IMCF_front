@@ -20,13 +20,13 @@ const movieTitle = {
     color: "white"
 }
 
-export default function PosterComponent(props) {
+export default function PosterComponent(post, post_link) {
     return (
-        <div style={posterStyle}>
+        <div style={posterStyle} href={post_link}>
             <div style={imgStyle}>
                 <div>영화 이미지</div>
             </div>
-            <div style={movieTitle}>{props.name}</div>
+            <div style={movieTitle}>{post.name}</div>
         </div>
     )
 }
