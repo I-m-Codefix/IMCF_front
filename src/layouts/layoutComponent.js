@@ -1,4 +1,4 @@
-import Header from "./header";
+import Header from "../components/header";
 
 const layoutStyle = {
     width: "100%",

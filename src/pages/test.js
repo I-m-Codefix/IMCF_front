@@ -1,35 +1,29 @@
-import useStore from "../store/test";
+import { useState } from "react";
+import { Nav } from "react-bootstrap";
+import TabContentTitle from "../components/tabcontenttitle";
+
+function TabContent(props) {
+  if (props.clickedTab === 0) {
+    return (<TabContentTitle className="mt-5" />);
+  } else {
+    return (<TabContentTitle className="mt-5" />);
+  }
+}
 
 function Test() {
-  // 1번 방식
-  const count = useStore((state) => state.counter);
-
-  // 2번 방식
-  const { counter, plus, setValue } = useStore();
-
-  // 자바스크립트 기본
-  const onChange = (e) => {
-    setValue(e.target.value);
-  }
-
+  let [clickedTab, setClickedTab] = useState(0);
   return (
     <div className="Test">
-      <div>
-        <h1>1번 방식</h1>
-        {count}<br />
-        <button onClick={useStore((state) => state.plus)}>Plus Count</button>
-      </div>
-      <div>
-        <h1>2번 방식</h1>
-        {counter}<br />
-        <button onClick={plus}>Plus Count</button>
-      </div>
-      <div>
-        <h1>값 할당</h1>
-        {counter}<br />
-        <input onChange={onChange} />
-        <button onClick={plus}>Plus Count</button>
-      </div>
+      <Nav className="mt-5" variant="tabs" defaultActiveKey="0">
+        <Nav.Item>
+          <Nav.Link eventKey="0" onClick={()=>{setClickedTab(0)}}>상세정보</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="1" onClick={()=>{setClickedTab(1)}}>리뷰</Nav.Link>
+        </Nav.Item>
+      </Nav>
+
+      <TabContent clickedTab={clickedTab} />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { Breadcrumb, Container, Row, Col } from "react-bootstrap";
-import LayoutComponent from "../components/layoutComponent";
+import LayoutComponent from "../layouts/layoutComponent";
 import PosterComponent from "../components/postercomponent";
 
 const mainStyle = {
