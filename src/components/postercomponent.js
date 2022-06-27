@@ -22,7 +22,7 @@ const movieTitle = {
 
 export default function PosterComponent(post, post_link) {
     return (
-        <div style={posterStyle} href={post_link}>
+        <div style={posterStyle} href={post_link} onClick="">
             <div style={imgStyle}>
                 <div>영화 이미지</div>
             </div>

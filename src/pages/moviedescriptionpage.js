@@ -1,8 +1,9 @@
-import { Breadcrumb, Container, Row, Col, Card, Navbar, Nav } from "react-bootstrap";
+import { Breadcrumb, Container, Row, Col, Card, Navbar, Nav, Tab, Tabs, TabList, TabPanel, TabContext, Box } from "react-bootstrap";
+import React, { useState } from 'react';
 import LayoutComponent from "../components/layoutComponent";
 import PosterComponent from "../components/postercomponent";
 import ButtonComponent from "../components/buttoncomponent";
-import InputGroupComponent from "../components/inputgroupcomponent";
+import TabContentTitle from "../components/inputgroupcomponent";
 
 const mainStyle = {
     display: "flex",
@@ -68,7 +69,9 @@ const chageBox = {
     width: "100%",
 }
 
+
 function Moviedescriptionpage() {
+    let [clickedTab, setClickedTab] = useState(0);
     return (
         <LayoutComponent>
             <div style={mainStyle}>
@@ -86,25 +89,32 @@ function Moviedescriptionpage() {
                         </div>
                     </div>
                     <div style={chageBox}>
-                        <Navbar variant="dark">
-                            <Container>
-                                <Nav.Link>리뷰 작성</Nav.Link>
-                                <Nav.Link>관련 영화</Nav.Link>
-                            </Container>
-                        </Navbar>
-                    </div>
-                    <div style={buttonwrapper} >
-                        <InputGroupComponent />
-                        <ButtonComponent btn_text="입력" />
+                        <Nav className="mt-5" variant="tabs" defaultActiveKey="0">
+                            <Nav.Item>
+                                <Nav.Link eventKey="0" onClick={() => { setClickedTab(0) }}>리뷰 작성</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link eventKey="1" onClick={() => { setClickedTab(1) }}>관련 영화</Nav.Link>
+                            </Nav.Item>
+                        </Nav>
+                        <TabContent clickedTab={clickedTab} />
                     </div>
                     <div style={buttonwrapper}>
-                        <ButtonComponent btn_text="뒤로가기" />
-                        <ButtonComponent btn_text="확인" />
+                        <ButtonComponent btn_text="뒤로가기" btn_link="/main" />
+                        <ButtonComponent btn_text="재생" btn_link="playscreen_fullpage" />
                     </div>
                 </Card>
             </div>
         </LayoutComponent >
     );
+
+}
+function TabContent(props) {
+    if (props.clickedTab === 0) {
+        return (<TabContentTitle className="mt-5"></TabContentTitle>)
+    } else {
+        return (<TabContentTitle className="mt-5"></TabContentTitle>)
+    }
 }
 
 export default Moviedescriptionpage;
