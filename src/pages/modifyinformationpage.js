@@ -1,5 +1,5 @@
 import { Breadcrumb, Card } from "react-bootstrap";
-import LayoutComponent from "../components/layoutComponent";
+import LayoutComponent from "../layouts/layoutComponent";
 import ButtonComponent from "../components/buttoncomponent";
 import InputGroupComponent from "../components/inputgroupcomponent";
 

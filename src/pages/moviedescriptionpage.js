@@ -1,6 +1,6 @@
-import { Breadcrumb, Container, Row, Col, Card, Navbar, Nav, Tab, Tabs, TabList, TabPanel, TabContext, Box } from "react-bootstrap";
-import React, { useState } from 'react';
-import LayoutComponent from "../components/layoutComponent";
+import { Card, Nav } from "react-bootstrap";
+import { useState } from "react";
+import LayoutComponent from "../layouts/layoutComponent";
 import PosterComponent from "../components/postercomponent";
 import ButtonComponent from "../components/buttoncomponent";
 import TabContentTitle from "../components/inputgroupcomponent";
@@ -8,7 +8,7 @@ import TabContentTitle from "../components/inputgroupcomponent";
 const mainStyle = {
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "center", 
     width: "100%",
     height: "100%",
 }
@@ -69,6 +69,13 @@ const chageBox = {
     width: "100%",
 }
 
+function TabContent(props) {
+    if (props.clickedTab === 0) {
+        return (<TabContentTitle className="mt-5" />);
+    } else {
+        return (<TabContentTitle className="mt-5" />);
+    }
+}
 
 function Moviedescriptionpage() {
     let [clickedTab, setClickedTab] = useState(0);
@@ -108,13 +115,6 @@ function Moviedescriptionpage() {
         </LayoutComponent >
     );
 
-}
-function TabContent(props) {
-    if (props.clickedTab === 0) {
-        return (<TabContentTitle className="mt-5"></TabContentTitle>)
-    } else {
-        return (<TabContentTitle className="mt-5"></TabContentTitle>)
-    }
 }
 
 export default Moviedescriptionpage;
