@@ -42,7 +42,6 @@ const labelStyle = {
 }
 
 const headStyle = {
-    border: "1px solid red",
     width: "100%",
     display: "flex",
     justifyContent: "space-between"
@@ -71,9 +70,9 @@ const chageBox = {
 
 function TabContent(props) {
     if (props.clickedTab === 0) {
-        return (<TabContentTitle className="mt-5" />);
-    } else {
-        return (<TabContentTitle className="mt-5" />);
+        return (<TabContentTitle className="mt-5" num = "0" /> );
+    } else if (props.clickedTab === 1){
+        return (<TabContentTitle className="mt-5" num = "1"/> );
     }
 }
 
