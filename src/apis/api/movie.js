@@ -2,7 +2,7 @@
 import { Axios } from '../utils/index';
 
 // 영화 정보 가져오기
-export async function loadMovie() {
+export const loadMovie = async () => {
     const res = await Axios.get('/movie');
     return res;
 }

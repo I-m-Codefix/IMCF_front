@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const SERVER_ADDRESS = "";
+const SERVER_ADDRESS = "http://";
 
 export const Axios = axios.create({
     baseURL: `{${SERVER_ADDRESS}}`,

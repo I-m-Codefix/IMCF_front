@@ -3,7 +3,7 @@ import { useState } from "react";
 import LayoutComponent from "../layouts/layoutComponent";
 import PosterComponent from "../components/postercomponent";
 import ButtonComponent from "../components/buttoncomponent";
-import TabContentTitle from "../components/inputgroupcomponent";
+import TabContentTitle from "../components/tabcontenttitle";
 
 const mainStyle = {
     display: "flex",
@@ -68,7 +68,6 @@ const chageBox = {
     display: "flex",
     width: "100%",
 }
-
 function TabContent(props) {
     if (props.clickedTab === 0) {
         return (<TabContentTitle className="mt-5" />);
@@ -78,7 +77,12 @@ function TabContent(props) {
 }
 
 function Moviedescriptionpage() {
-    let [clickedTab, setClickedTab] = useState(0);
+    let [clickedTab, setClickedTab] = useState(0)
+
+    const handlerChange = (event) => {
+        setClickedTab(event.target.value);
+    }
+
     return (
         <LayoutComponent>
             <div style={mainStyle}>
@@ -98,10 +102,10 @@ function Moviedescriptionpage() {
                     <div style={chageBox}>
                         <Nav className="mt-5" variant="tabs" defaultActiveKey="0">
                             <Nav.Item>
-                                <Nav.Link eventKey="0" onClick={() => { setClickedTab(0) }}>리뷰 작성</Nav.Link>
+                                <Nav.Link eventKey="0" onClick={handlerChange}>상세정보</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link eventKey="1" onClick={() => { setClickedTab(1) }}>관련 영화</Nav.Link>
+                                <Nav.Link eventKey="1" onClick={handlerChange}>리뷰</Nav.Link>
                             </Nav.Item>
                         </Nav>
                         <TabContent clickedTab={clickedTab} />

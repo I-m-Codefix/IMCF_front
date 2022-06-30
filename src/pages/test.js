@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Nav } from "react-bootstrap";
 import TabContentTitle from "../components/tabcontenttitle";
+import LayoutComponent from "../layouts/layoutComponent";
 
 function TabContent(props) {
   if (props.clickedTab === 0) {
