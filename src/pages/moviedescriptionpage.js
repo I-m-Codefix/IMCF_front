@@ -42,7 +42,6 @@ const labelStyle = {
 }
 
 const headStyle = {
-    border: "1px solid red",
     width: "100%",
     display: "flex",
     justifyContent: "space-between"
@@ -70,9 +69,9 @@ const chageBox = {
 }
 function TabContent(props) {
     if (props.clickedTab === 0) {
-        return (<TabContentTitle className="mt-5" />);
-    } else {
-        return (<TabContentTitle className="mt-5" />);
+        return (<TabContentTitle className="mt-5" num = "0" /> );
+    } else if (props.clickedTab === 1){
+        return (<TabContentTitle className="mt-5" num = "1"/> );
     }
 }
 
@@ -102,10 +101,10 @@ function Moviedescriptionpage() {
                     <div style={chageBox}>
                         <Nav className="mt-5" variant="tabs" defaultActiveKey="0">
                             <Nav.Item>
-                                <Nav.Link eventKey="0" onClick={handlerChange}>상세정보</Nav.Link>
+                                <Nav.Link eventKey="0" onClick={()=>{setClickedTab(0)}}>리뷰 작성</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link eventKey="1" onClick={handlerChange}>리뷰</Nav.Link>
+                                <Nav.Link eventKey="1" onClick={()=>{setClickedTab(1)}}>관련 영화</Nav.Link>
                             </Nav.Item>
                         </Nav>
                         <TabContent clickedTab={clickedTab} />
