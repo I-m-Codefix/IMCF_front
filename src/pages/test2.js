@@ -16,20 +16,20 @@ const colorWhite = {
   color: "white",
 }
 
-function Test() {
+function Test2() {
   let navigate = useNavigate();
   const counter = useStore(state => state.counter);
   const plus = useStore(state => state.plus);
   return (
     <TestLayout>
-      <h1 style={colorWhite}>테스트1</h1>
+      <h1 style={colorWhite}>테스트2</h1>
       <div style={TestStyle}>
         <div style={colorWhite}>{counter}</div>
         <Button variant="success" onClick={plus}>더하기</Button>
-        <Button variant="secondary" onClick={() => {navigate("/test2")}}>Test2</Button>
+        <Button variant="secondary" onClick={() => {navigate("/test")}}>Test1</Button>
       </div>
     </TestLayout>
   );
 }
 
-export default Test;
+export default Test2;
