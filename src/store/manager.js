@@ -7,8 +7,8 @@ const store = (set) => ({
     plus: () => set((state) => {
         state.counter++;
     }),
-    setValue: (value) => set({
-        counter: value,
+    setValue: (value) => set((state) => {
+        state.counter = value;
     }),
 });
 
