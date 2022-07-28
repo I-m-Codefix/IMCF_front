@@ -17,8 +17,8 @@ const cardStyle = {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    width: "45%",
-    padding: "50px",
+    width: "60%",
+    padding: "30px",
     background: "rgba(154, 140, 152, 0.8)",
     borderRadius: "50px",
 }
@@ -29,7 +29,7 @@ const profile = {
     alignItems: "center",
     justifyContent: "flex-start",
     width: "100%",
-    padding: "50px 0",
+    padding: "25px 0",
 }
 
 const thumbStyle = {
@@ -49,7 +49,7 @@ const changeBox = {
     display: "flex",
     flexDirection: "row",
     width: "100%",
-    padding: "23px 0",
+    padding: "10px 0",
 }
 
 const buttonwrapper = {
@@ -63,7 +63,7 @@ const buttonwrapper = {
 const labelStyle = {
     width: "200px",
     color: "white",
-    padding: "0 10px 0 0"
+    padding: "0 0px 0 0"
 }
 
 function Modifyinformationpage() {
