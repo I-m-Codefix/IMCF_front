@@ -3,6 +3,8 @@ import ButtonComponent from "../components/buttoncomponent";
 import InputGroupComponent from "../components/inputgroupcomponent";
 import bg from "../assets/image/bg1.jpg";
 import logo from "../assets/logo/logo_transparent.png";
+import { useEffect } from "react";
+import axios from "axios";
 
 const bgStyle = {
     width: "100%",
@@ -72,7 +74,43 @@ const logoStyle = {
     height: "500px",
 }
 
-function Loginpage() {
+
+
+
+//카카오
+// const REST_API_KEY = "~~";
+// const REDIRECT_URI =  "http://localhost:5000/";
+
+// export const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+
+// import {KAKAO_AUTH_URL} from '../../~~';
+
+function Loginpage(props) {
+    function joinHandler(){
+        try{
+            let data = {email: "devracoon@naver.com"};
+            axios.post("/auth/login" ,JSON.stringify(data), {
+                headers: {
+                  "Content-Type": `application/json`,
+                }})
+            .then(res =>{
+                console.log("res.data.accessToken : " + res.data);
+                axios.defaults.headers.common['Authorization'] = 'Bearer ' + res.data;
+                props.loginCallBack(true);
+                props.history.push("/");
+            })
+            .catch(ex=>{
+                console.log("login requset fail : " + ex);
+            })
+            .finally(()=>{console.log("login request end")});
+        }catch(e){
+            console.log(e);
+        }
+    }
+    useEffect(()=>{
+        console.log("LoginPage render ... ");
+    })
+
     return (
         <div style={bgStyle}>
             <div style={overlayStyle}>
@@ -90,7 +128,7 @@ function Loginpage() {
                         </div>
                         <div style={colStyle}>
                             <ButtonComponent btn_text="회원가입" btn_link="/signup" /><br/>
-                            <ButtonComponent btn_text="카카오로그인" btn_link="/" />
+                            {/* <ButtonComponent href={KAKAO_AUTH_URL} btn_text="카카오로그인" btn_link="/" /> */}
                         </div>
                     </Card>
                 </div>
