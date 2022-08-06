@@ -4,6 +4,7 @@ import Notfound from "./pages/notfound";
 import Mainpage from "./pages/mainpage";
 import Usermypage from "./pages/usermypage";
 import Signuppage from "./pages/signuppage";
+import Mailalarm from "./pages/mailalarm";
 import Modifyinformationpage from "./pages/modifyinformationpage";
 import Cpapage from "./pages/cpapage";
 import Moviedescriptionpage from "./pages/moviedescriptionpage";
@@ -30,6 +31,7 @@ function Router() {
                 <Route path="registmovie" element={<Movieapplicationpage />} />
                 <Route path="registlive" element={<Liveapplicationpage />} />
                 <Route path="playscreen_fullpage" element={<Playscreen_fullpage />} />
+                <Route path="mailalarm" element={<Mailalarm />} />
                 <Route path="playscreen_windowpage" element={<Playscreen_windowpage />} />
                 <Route path="*" element={<Notfound />} />
                 

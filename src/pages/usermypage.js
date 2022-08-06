@@ -27,7 +27,7 @@ const profile = {
     alignItems: "center",
     justifyContent: "flex-start",
     width: "100%",
-    padding: "50px 0",
+    padding: "25px 0",
 }
 
 const thumbStyle = {
@@ -45,7 +45,7 @@ const nameStyle = {
 const request = {
     display: "flex",
     width: "100%",
-    padding: "50px 0",
+    padding: "25px 0",
 }
 
 function Usermypage() {
