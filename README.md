@@ -16,8 +16,8 @@
 
 ### `npm start`
 
-SSR을 통해 구현할 경우 Production 서버로 실행할 수 있도록 할 예정.
-현재는 `npm run dev`와 동일한 동작을 함.
+Production 서버에서 pm2를 통해 배포.
+prestart 옵션으로 build가 먼저 진행된 뒤 실행.
 
 ### `npm test`
 

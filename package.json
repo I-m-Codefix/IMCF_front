@@ -9,6 +9,7 @@
     "axios": "^0.27.2",
     "bootstrap": "^5.1.3",
     "classnames": "^2.3.1",
+    "cross-env": "^7.0.3",
     "http-proxy-middleware": "^2.0.6",
     "node-sass": "^7.0.1",
     "open-color": "^1.9.1",
@@ -28,7 +29,10 @@
   "scripts": {
     "lint": "eslint **/*",
     "dev": "set PORT=5000 && react-scripts start",
-    "start": "set PORT=5000 && react-scripts start",
+    "prestart": "react-scripts build",
+    "start": "pm2 serve build 5000 --spa --name imcf-front-server",
+    "restart": "pm2 restart imcf-front-server",
+    "reload": "pm2 reload imcf-front-server",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

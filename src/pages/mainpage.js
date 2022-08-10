@@ -26,7 +26,7 @@ function Mainpage() {
                 <Container style={movieBox}>
                     <Row style={rowStyle}>
                         <Col><PosterComponent name="영화제목1" post_link="/"/></Col>
-                        <Col><PosterComponent name="영화제목2" /></Col>
+                        <Col><PosterComponent name="영화제목2" post_link="/"/></Col>
                         <Col><PosterComponent name="영화제목3" /></Col>
                         <Col><PosterComponent name="영화제목4" /></Col>
                         <Col><PosterComponent name="영화제목5" /></Col>
