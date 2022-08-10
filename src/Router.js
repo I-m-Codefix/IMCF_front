@@ -6,6 +6,8 @@ import Usermypage from "./pages/usermypage";
 import Signuppage from "./pages/signuppage";
 import Mailalarm from "./pages/mailalarm";
 import Modifyinformationpage from "./pages/modifyinformationpage";
+import Pwdchangepage from "./pages/pwdchangepage";
+import Emailpage from "./pages/emailpage";
 import Cpapage from "./pages/cpapage";
 import Moviedescriptionpage from "./pages/moviedescriptionpage";
 import Movieapplicationpage from "./pages/movieapplicationpage";
@@ -26,6 +28,8 @@ function Router() {
                 <Route path="user" element={<Usermypage />} />
                 <Route path="delete" element={<Memberwithdrawalpage />} />
                 <Route path="modify" element={<Modifyinformationpage />} />
+                <Route path="pwdchange" element={<Pwdchangepage />} />
+                <Route path="email" element={<Emailpage />} />
                 <Route path="contentprovide" element={<Cpapage />} />
                 <Route path="infomovie" element={<Moviedescriptionpage />} />
                 <Route path="registmovie" element={<Movieapplicationpage />} />
