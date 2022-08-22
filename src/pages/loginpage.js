@@ -76,8 +76,11 @@ const logoStyle = {
 }
 
 const kakaoLogin = async () => {
-    const response = await Axios.get('/');
-    console.log(response.data);
+    const response = await Axios.get('/info/oauth2/kakao/client-id');
+    console.log(response.data.uri);
+    if (window.location == 'http://localhost:5000/') {
+        window.open([response.data.uri], '_blank')
+    }
 }
 
 function Loginpage(props) {
@@ -89,15 +92,15 @@ function Loginpage(props) {
                     <Card style={cardStyle}>
                         <div style={rowStyle}>
                             <div style={inputboxStyle}>
-                                <InputGroupComponent placeholder = "ID"></InputGroupComponent>
-                                <InputGroupComponent placeholder = "PWD"></InputGroupComponent>
+                                <InputGroupComponent placeholder="ID"></InputGroupComponent>
+                                <InputGroupComponent placeholder="PWD"></InputGroupComponent>
                             </div>
                             <div style={buttonboxStyle}>
-                                <ButtonComponent btn_text="로그인" btn_link="/main" /><br/>
+                                <ButtonComponent btn_text="로그인" btn_link="/main" /><br />
                             </div>
                         </div>
                         <div style={colStyle}>
-                            <ButtonComponent btn_text="회원가입" btn_link="/signup" /><br/>
+                            <ButtonComponent btn_text="회원가입" btn_link="/signup" /><br />
                         </div>
                         <div>
                             <img src={kakao} onClick={kakaoLogin} />
