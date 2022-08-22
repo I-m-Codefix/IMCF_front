@@ -8,17 +8,22 @@ const divStyle = {
     padding: "0 10px"
 }
 
-const btnStyle = {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    color: "black"
+const btnStyle = (style) => {
+    if (style) {
+        return style;
+    }
+    return {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        color: "black"
+    }
 }
 
-const ButtonComponent = ({ btn_text, btn_link }) => {
+const ButtonComponent = ({ btn_text, btn_link, style }) => {
     return (
         <div style={divStyle}>
-            <Button style={btnStyle} href={btn_link}> {btn_text} </Button>
+            <Button style={btnStyle(style)} href={btn_link}> {btn_text} </Button>
         </div>
     );
 }

@@ -1,10 +1,11 @@
-import { Breadcrumb, Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import ButtonComponent from "../components/buttoncomponent";
 import InputGroupComponent from "../components/inputgroupcomponent";
 import bg from "../assets/image/bg1.jpg";
 import logo from "../assets/logo/logo_transparent.png";
+import kakao from "../assets/image/kakao_login_medium_wide.png";
 import { useEffect } from "react";
-import axios from "axios";
+import { Axios } from "../apis/utils/index";
 
 const bgStyle = {
     width: "100%",
@@ -74,43 +75,12 @@ const logoStyle = {
     height: "500px",
 }
 
-
-
-
-//카카오
-// const REST_API_KEY = "~~";
-// const REDIRECT_URI =  "http://localhost:5000/";
-
-// export const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
-
-// import {KAKAO_AUTH_URL} from '../../~~';
+const kakaoLogin = async () => {
+    const response = await Axios.get('/');
+    console.log(response.data);
+}
 
 function Loginpage(props) {
-    function joinHandler(){
-        try{
-            let data = {email: "devracoon@naver.com"};
-            axios.post("/auth/login" ,JSON.stringify(data), {
-                headers: {
-                  "Content-Type": `application/json`,
-                }})
-            .then(res =>{
-                console.log("res.data.accessToken : " + res.data);
-                axios.defaults.headers.common['Authorization'] = 'Bearer ' + res.data;
-                props.loginCallBack(true);
-                props.history.push("/");
-            })
-            .catch(ex=>{
-                console.log("login requset fail : " + ex);
-            })
-            .finally(()=>{console.log("login request end")});
-        }catch(e){
-            console.log(e);
-        }
-    }
-    useEffect(()=>{
-        console.log("LoginPage render ... ");
-    })
-
     return (
         <div style={bgStyle}>
             <div style={overlayStyle}>
@@ -128,7 +98,9 @@ function Loginpage(props) {
                         </div>
                         <div style={colStyle}>
                             <ButtonComponent btn_text="회원가입" btn_link="/signup" /><br/>
-                            {/* <ButtonComponent href={KAKAO_AUTH_URL} btn_text="카카오로그인" btn_link="/" /> */}
+                        </div>
+                        <div>
+                            <img src={kakao} onClick={kakaoLogin} />
                         </div>
                     </Card>
                 </div>
