@@ -4,8 +4,9 @@ import InputGroupComponent from "../components/inputgroupcomponent";
 import bg from "../assets/image/bg1.jpg";
 import logo from "../assets/logo/logo_transparent.png";
 import kakao from "../assets/image/kakao_login_medium_wide.png";
-import { useEffect } from "react";
 import { Axios } from "../apis/utils/index";
+import React, { useRef } from 'react';
+import { useCookies } from 'react-cookie';
 
 const bgStyle = {
     width: "100%",
@@ -78,9 +79,7 @@ const logoStyle = {
 const kakaoLogin = async () => {
     const response = await Axios.get('/info/oauth2/kakao/client-id');
     console.log(response.data.uri);
-    if (window.location == 'http://localhost:5000/') {
-        window.open([response.data.uri], '_blank')
-    }
+    window.open([response.data.uri])
 }
 
 function Loginpage(props) {
