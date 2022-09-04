@@ -1,12 +1,15 @@
-import { Card, Button } from "react-bootstrap";
-import ButtonComponent from "../components/buttoncomponent";
-import InputGroupComponent from "../components/inputgroupcomponent";
+import React from 'react';
+import { Axios } from "../apis/utils/index";
+import { useCookies } from 'react-cookie';
+
 import bg from "../assets/image/bg1.jpg";
 import logo from "../assets/logo/logo_transparent.png";
 import kakao from "../assets/image/kakao_login_medium_wide.png";
-import { Axios } from "../apis/utils/index";
-import React, { useRef } from 'react';
-import { useCookies } from 'react-cookie';
+
+import ButtonComponent from "../components/buttoncomponent";
+import InputGroupComponent from "../components/inputgroupcomponent";
+
+import { Card } from "react-bootstrap";
 
 const bgStyle = {
     width: "100%",
@@ -76,52 +79,81 @@ const logoStyle = {
     height: "500px",
 }
 
-const kakaoLogin = async () => {
-    const response = await Axios.get('/info/oauth2/kakao/client-id');
-    window.open([response.data.uri], '_self')
+const mainStyle = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    height: "100%",
 }
 
-function Loginpage(props) {
-    let params = new URLSearchParams(window.location.search);
-    
-    if(params.get('token') !== null){
-        let name = params.get('name');
-        let token = params.get('token');
-        let email = params.get('email');
-        let platformType = params.get('platformType');
-        let profileImage = params.get('profileImage');
-        let expireTime = params.get('expireTime');
-        
-        console.log(`name: ${name}\n token: ${token}\n email: ${email}\n platformType: ${platformType}\n profileImage: ${profileImage}\n expireTime: ${expireTime}`);
-    }
-    
+const posterRowStyle = {
+    height: "50%",
+    padding: "10px"
+}
 
-    return (
-        <div style={bgStyle}>
-            <div style={overlayStyle}>
-                <div style={wrapperStyle}>
-                    <img src={logo} style={logoStyle} />
-                    <Card style={cardStyle}>
-                        <div style={rowStyle}>
-                            <div style={inputboxStyle}>
-                                <InputGroupComponent placeholder="ID"></InputGroupComponent>
-                                <InputGroupComponent placeholder="PWD"></InputGroupComponent>
+const movieBox = {
+    height: "50%"
+}
+
+const kakaoLogin = async () => {
+    const response = await Axios.get('/info/oauth2/kakao/client-id');
+    window.open([response.data.uri], '_self');
+}
+
+const toMain = () => {
+    window.location.replace("http://localhost:5000/main");
+}
+
+function Loginpage({ history }) {
+    const [cookies, setCookie, removeCookie] = useCookies(['userInfo']);
+    let params = new URLSearchParams(window.location.search);
+
+    if (params.get('token') !== null) {
+        let token = params.get('token');
+        console.log(`token: ${token}`);
+        setCookie('userInfo', {
+            name: params.get('name'),
+            email: params.get('email'),
+            token: token,
+            platformType: params.get('platformType'),
+            expireTime: params.get('expireTime')
+        });
+
+        // 꼼수 - 컴포넌트 이벤트에 괄호를 넣으면 렌더링 되는 즉시 실행.
+        return (
+            <div onClick={toMain()}>
+                로딩중...
+            </div>
+        );
+    } else {
+        return (
+            <div style={bgStyle}>
+                <div style={overlayStyle}>
+                    <div style={wrapperStyle}>
+                        <img src={logo} style={logoStyle} />
+                        <Card style={cardStyle}>
+                            <div style={rowStyle}>
+                                <div style={inputboxStyle}>
+                                    <InputGroupComponent placeholder="ID"></InputGroupComponent>
+                                    <InputGroupComponent placeholder="PWD"></InputGroupComponent>
+                                </div>
+                                <div style={buttonboxStyle}>
+                                    <ButtonComponent btn_text="로그인" btn_link="/main" /><br />
+                                </div>
                             </div>
-                            <div style={buttonboxStyle}>
-                                <ButtonComponent btn_text="로그인" btn_link="/main" /><br />
+                            <div style={colStyle}>
+                                <ButtonComponent btn_text="회원가입" btn_link="/signup" /><br />
                             </div>
-                        </div>
-                        <div style={colStyle}>
-                            <ButtonComponent btn_text="회원가입" btn_link="/signup" /><br />
-                        </div>
-                        <div>
-                            <img src={kakao} onClick={kakaoLogin} />
-                        </div>
-                    </Card>
+                            <div>
+                                <img src={kakao} onClick={kakaoLogin} />
+                            </div>
+                        </Card>
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
 
 export default Loginpage;
