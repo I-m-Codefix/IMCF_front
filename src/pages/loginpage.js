@@ -77,9 +77,9 @@ const logoStyle = {
 }
 
 const kakaoLogin = async () => {
-    const response = await Axios.get('/info/oauth2/kakao/client-id');
-    console.log(response.data.uri);
-    window.open([response.data.uri])
+    const response = await Axios.get(`/info/oauth2/kakao/client-id?redirect_uri=${""}`);
+    console.log(response);
+    window.open([response.data.uri],'_self')
 }
 
 function Loginpage(props) {
