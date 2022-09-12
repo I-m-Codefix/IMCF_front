@@ -1,15 +1,12 @@
-import React from 'react';
-import { Axios } from "../apis/utils/index";
-import { useCookies } from 'react-cookie';
-
+import { Card, Button } from "react-bootstrap";
+import ButtonComponent from "../components/buttoncomponent";
+import InputGroupComponent from "../components/inputgroupcomponent";
 import bg from "../assets/image/bg1.jpg";
 import logo from "../assets/logo/logo_transparent.png";
 import kakao from "../assets/image/kakao_login_medium_wide.png";
-
-import ButtonComponent from "../components/buttoncomponent";
-import InputGroupComponent from "../components/inputgroupcomponent";
-
-import { Card } from "react-bootstrap";
+import { Axios } from "../apis/utils/index";
+import React, { useRef } from 'react';
+import { useCookies } from 'react-cookie';
 
 const bgStyle = {
     width: "100%",
@@ -80,63 +77,38 @@ const logoStyle = {
 }
 
 const kakaoLogin = async () => {
-    const response = await Axios.get('/info/oauth2/kakao/client-id');
-    window.open([response.data.uri], '_self');
+    const response = await Axios.get(`/info/oauth2/kakao/client-id?redirect_uri=${""}`);
+    console.log(response);
+    window.open([response.data.uri],'_self')
 }
 
-const toMain = () => {
-    window.location.replace("http://localhost:5000/main");
-}
-
-function Loginpage({ history }) {
-    const [cookies, setCookie, removeCookie] = useCookies(['userInfo']);
-    let params = new URLSearchParams(window.location.search);
-
-    if (params.get('token') !== null) {
-        let token = params.get('token');
-        console.log(`token: ${token}`);
-        setCookie('userInfo', {
-            name: params.get('name'),
-            email: params.get('email'),
-            token: token,
-            platformType: params.get('platformType'),
-            expireTime: params.get('expireTime')
-        });
-
-        // 꼼수 - 컴포넌트 이벤트에 괄호를 넣으면 렌더링 되는 즉시 실행.
-        return (
-            <div onClick={toMain()}>
-                로딩중...
-            </div>
-        );
-    } else {
-        return (
-            <div style={bgStyle}>
-                <div style={overlayStyle}>
-                    <div style={wrapperStyle}>
-                        <img src={logo} style={logoStyle} />
-                        <Card style={cardStyle}>
-                            <div style={rowStyle}>
-                                <div style={inputboxStyle}>
-                                    <InputGroupComponent placeholder="ID"></InputGroupComponent>
-                                    <InputGroupComponent placeholder="PWD"></InputGroupComponent>
-                                </div>
-                                <div style={buttonboxStyle}>
-                                    <ButtonComponent btn_text="로그인" btn_link="/main" /><br />
-                                </div>
+function Loginpage(props) {
+    return (
+        <div style={bgStyle}>
+            <div style={overlayStyle}>
+                <div style={wrapperStyle}>
+                    <img src={logo} style={logoStyle} />
+                    <Card style={cardStyle}>
+                        <div style={rowStyle}>
+                            <div style={inputboxStyle}>
+                                <InputGroupComponent placeholder="ID"></InputGroupComponent>
+                                <InputGroupComponent placeholder="PWD"></InputGroupComponent>
                             </div>
-                            <div style={colStyle}>
-                                <ButtonComponent btn_text="회원가입" btn_link="/signup" /><br />
+                            <div style={buttonboxStyle}>
+                                <ButtonComponent btn_text="로그인" btn_link="/main" /><br />
                             </div>
-                            <div>
-                                <img src={kakao} onClick={kakaoLogin} />
-                            </div>
-                        </Card>
-                    </div>
+                        </div>
+                        <div style={colStyle}>
+                            <ButtonComponent btn_text="회원가입" btn_link="/signup" /><br />
+                        </div>
+                        <div>
+                            <img src={kakao} onClick={kakaoLogin} />
+                        </div>
+                    </Card>
                 </div>
             </div>
-        );
-    }
+        </div>
+    );
 }
 
 export default Loginpage;
