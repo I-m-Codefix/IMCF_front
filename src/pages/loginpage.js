@@ -79,23 +79,6 @@ const logoStyle = {
     height: "500px",
 }
 
-const mainStyle = {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    width: "100%",
-    height: "100%",
-}
-
-const posterRowStyle = {
-    height: "50%",
-    padding: "10px"
-}
-
-const movieBox = {
-    height: "50%"
-}
-
 const kakaoLogin = async () => {
     const response = await Axios.get('/info/oauth2/kakao/client-id');
     window.open([response.data.uri], '_self');
