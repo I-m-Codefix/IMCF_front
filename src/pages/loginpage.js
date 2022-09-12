@@ -77,25 +77,12 @@ const logoStyle = {
 }
 
 const kakaoLogin = async () => {
-    const response = await Axios.get('/info/oauth2/kakao/client-id');
-    window.open([response.data.uri], '_self')
+    const response = await Axios.get(`/info/oauth2/kakao/client-id?redirect_uri=${""}`);
+    console.log(response);
+    window.open([response.data.uri],'_self')
 }
 
 function Loginpage(props) {
-    let params = new URLSearchParams(window.location.search);
-    
-    if(params.get('token') !== null){
-        let name = params.get('name');
-        let token = params.get('token');
-        let email = params.get('email');
-        let platformType = params.get('platformType');
-        let profileImage = params.get('profileImage');
-        let expireTime = params.get('expireTime');
-        
-        console.log(`name: ${name}\n token: ${token}\n email: ${email}\n platformType: ${platformType}\n profileImage: ${profileImage}\n expireTime: ${expireTime}`);
-    }
-    
-
     return (
         <div style={bgStyle}>
             <div style={overlayStyle}>

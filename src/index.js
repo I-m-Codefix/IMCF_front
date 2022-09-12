@@ -11,14 +11,13 @@ import App from './App';
 const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  //<React.StrictMode> // 이거 땜에 로그에 2번씩 찍힘. 개빡침.
     <QueryClientProvider client={queryClient}>
       <CookiesProvider>
         <App />
       </CookiesProvider>
     </QueryClientProvider>
-  </React.StrictMode>
-  
+  //</React.StrictMode>
 );
 
 export default App;
