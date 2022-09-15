@@ -1,6 +1,7 @@
 import logo from "../assets/logo/logo_row.png";
 import { BsSearch } from "react-icons/bs";
 import InputGroupComponent from "./inputgroupcomponent";
+import { useCookies } from 'react-cookie';
 
 const headerStyle = {
     display: "flex",
@@ -45,25 +46,35 @@ const iconStyle = {
     padding: "5px"
 }
 
-const thumbStyle = {
-    background: "#C4C4C4",
-    width: "50px",
-    height: "50px",
-    borderRadius: "50%"
+const thumbStyle = (thumbnail) => {
+    return {
+        backgroundImage: `url(${thumbnail})`,
+        backgroundSize: "50px",
+        width: "50px",
+        height: "50px",
+        borderRadius: "50%"
+    }
+}
+
+const clickMe = () => {
+    window.location.replace('/user')
 }
 
 export default function Header() {
+    const [cookies, getCookies, removeCookie] = useCookies(['userInfo']);
+    const username = cookies.userInfo?.name;
+    const thumbnail = cookies.userInfo?.thumb;
     return (
         <div style={headerStyle}>
             <div style={wrapperStyle}>
-                <img src={logo} style={logoStyle}/>
+                <img src={logo} style={logoStyle} />
                 <div style={searchStyle}>
-                    <BsSearch style={iconStyle}/>
+                    <BsSearch style={iconStyle} />
                     <InputGroupComponent props="검색" />
                 </div>
-                <div style={myStyle}>
-                    <div>닉네임</div>
-                    <div style={thumbStyle} />
+                <div style={myStyle} onClick={clickMe}>
+                    <div>{username}</div>
+                    <div style={thumbStyle(thumbnail)} />
                 </div>
             </div>
         </div>

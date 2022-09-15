@@ -111,8 +111,9 @@ function Loginpage({ history }) {
 
     if (params.get('token') !== null) {
         let token = params.get('token');
-        console.log(`token: ${token}`);
+        console.log(`token: ${params}`);
         setCookie('userInfo', {
+            thumb: params.get('profileImage'),
             name: params.get('name'),
             email: params.get('email'),
             token: token,

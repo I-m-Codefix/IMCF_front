@@ -1,7 +1,7 @@
 import { Breadcrumb, Card } from "react-bootstrap";
 import LayoutComponent from "../layouts/layoutComponent";
 import ButtonComponent from "../components/buttoncomponent";
-
+import { useCookies } from 'react-cookie';
 const mainStyle = {
     display: "flex",
     alignItems: "center",
@@ -30,12 +30,16 @@ const profile = {
     padding: "25px 0",
 }
 
-const thumbStyle = {
-    background: "#C4C4C4",
-    width: "100px",
-    height: "100px",
-    borderRadius: "50%"
+const thumbStyle = (thumbnail) => {
+    return {
+        backgroundImage: `url(${thumbnail})`,
+        backgroundSize: "100px",
+        width: "100px",
+        height: "100px",
+        borderRadius: "50%"
+    }
 }
+
 
 const nameStyle = {
     margin: "0 25px",
@@ -49,13 +53,16 @@ const request = {
 }
 
 function Usermypage() {
+    const [cookies, getCookies, removeCookie] = useCookies(['userInfo']);
+    const username = cookies.userInfo?.name;
+    const thumbnail = cookies.userInfo?.thumb;
     return (
         <LayoutComponent>
             <div style={mainStyle}>
                 <Card style={cardStyle}>
                     <div style={profile}>
-                        <div style={thumbStyle} />
-                        <div style={nameStyle}>이름</div>
+                        <div style={thumbStyle(thumbnail)} />
+                        <div style={nameStyle}>{username}</div>
                     </div>
                     <div style={request}>
                         <ButtonComponent btn_text="개인 정보 수정" btn_link="/modify" />
