@@ -2,6 +2,8 @@ import { Breadcrumb, Card } from "react-bootstrap";
 import LayoutComponent from "../layouts/layoutComponent";
 import ButtonComponent from "../components/buttoncomponent";
 import { useCookies } from 'react-cookie';
+import { Axios } from "../apis/utils/index";
+
 const mainStyle = {
     display: "flex",
     alignItems: "center",
@@ -52,10 +54,21 @@ const request = {
     padding: "25px 0",
 }
 
+
+
 function Usermypage() {
     const [cookies, getCookies, removeCookie] = useCookies(['userInfo']);
     const username = cookies.userInfo?.name;
     const thumbnail = cookies.userInfo?.thumb;
+    const onClickHandler = async () => {
+        cookies.removeCookie('userInfo');
+        const response = await Axios.get('/login/oauth2/logout')
+        if (response.status === 200) {
+            console.log(response);
+        } else {
+            alert('로그아웃 실패')
+        }
+    }
     return (
         <LayoutComponent>
             <div style={mainStyle}>
@@ -73,11 +86,11 @@ function Usermypage() {
                         <ButtonComponent btn_text="라이브 공연 신청" btn_link="/registlive" />
                     </div>
                     <div style={request}>
-                        <ButtonComponent btn_text="로그아웃" btn_link="/" />
+                        <ButtonComponent btn_text="로그아웃" onClick={onClickHandler} />
                         <ButtonComponent btn_text="회원탈퇴" btn_link="/delete" />
                     </div>
                     <div style={request}>
-                        <ButtonComponent btn_text="뒤로가기" btn_link="/main"/>
+                        <ButtonComponent btn_text="뒤로가기" btn_link="/main" />
                     </div>
                 </Card>
             </div>
