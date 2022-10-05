@@ -20,22 +20,23 @@ const btnStyle = (style) => {
     }
 }
 
-const ButtonComponent = ({ btn_text, btn_link, style }) => {
+const ButtonComponent = ({ btn_text, btn_link, onClick, style }) => {
     return (
         <div style={divStyle}>
-            <Button style={btnStyle(style)} href={btn_link}> {btn_text} </Button>
+            <Button style={btnStyle(style)} href={btn_link} onClick={onClick}> {btn_text} </Button>
         </div>
     );
 }
 
 ButtonComponent.propsTypes = {
     btn_text: PropTypes.string.isRequired,
-    btn_link: PropTypes.string
+    btn_link: PropTypes.string,
+    onClick: PropTypes.func
 }
 
 ButtonComponent.defaultProps = {
     btn_text: '대체 텍스트',
-    btn_link: '/'
+    //btn_link: ''
 }
 
 export default ButtonComponent;

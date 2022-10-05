@@ -1,4 +1,4 @@
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import LayoutComponent from "../layouts/layoutComponent";
 import ButtonComponent from "../components/buttoncomponent";
 import { useCookies } from 'react-cookie';
@@ -54,24 +54,28 @@ const request = {
     padding: "25px 0",
 }
 
+const btnStyle = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    color: "black"
+}
 
+const onClickHandler = async ([cookies, getCookies, removeCookie]) => {
+    const response = await Axios.get('/login/oauth2/logout')
+    if (response.data.code === 200) {
+        await removeCookie('userInfo');
+        window.location.replace('/');
+    } else {
+        console.log(response);
+    }
+}
 
 function Usermypage() {
     const [cookies, getCookies, removeCookie] = useCookies(['userInfo']);
     const username = cookies.userInfo?.name;
     const thumbnail = cookies.userInfo?.thumb;
-    const onClickHandler = async () => {
-        cookies.removeCookie('userInfo');
-        // btn 컴포넌트엥서 btn_link 디폴트 값 대신 다른걸로 대체;;
-        // 새 창 띄워서 넘겨서 처리하면 될듯?
-        // 토큰만 지우고, 메인으로 돌리기
-        const response = await Axios.get('/login/oauth2/logout')
-        if (response.status === 200) {
-            console.log(response);
-        } else {
-            alert('로그아웃 실패')
-        }
-    }
+    
     return (
         <LayoutComponent>
             <div style={mainStyle}>
@@ -89,7 +93,7 @@ function Usermypage() {
                         <ButtonComponent btn_text="라이브 공연 신청" btn_link="/registlive" />
                     </div>
                     <div style={request}>
-                        <ButtonComponent btn_text="로그아웃" onClick={onClickHandler} btn_link="/" />
+                        <Button onClick={() => {onClickHandler([cookies, getCookies, removeCookie])}} style={btnStyle}>로그아웃</Button>
                         <ButtonComponent btn_text="회원탈퇴" btn_link="/delete" />
                     </div>
                     <div style={request}>
