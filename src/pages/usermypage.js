@@ -65,14 +65,13 @@ const onClickHandler = async ([cookies, getCookies, removeCookie]) => {
     const response = await Axios.get('/login/oauth2/logout',
         {
             headers: {
-                Authorization: cookies.userInfo.token,
-                withCredentials: true,
-                /*'Content-Type': `application/json;charset=UTF-8`,
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Credentials': 'true',*/
+                'Authorization': cookies.userInfo.token,
+                'Access-Control-Allow-Origin': '*'
             }
         }
     )
+
+    alert(JSON.stringify(response));
     if (response.data.code === 200) {
         await removeCookie('userInfo');
         window.location.replace('/');
