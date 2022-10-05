@@ -62,11 +62,22 @@ const btnStyle = {
 }
 
 const onClickHandler = async ([cookies, getCookies, removeCookie]) => {
-    const response = await Axios.get('/login/oauth2/logout')
+    const response = await Axios.get('/login/oauth2/logout',
+        {
+            headers: {
+                Authorization: cookies.userInfo.token,
+                withCredentials: true,
+                /*'Content-Type': `application/json;charset=UTF-8`,
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': 'true',*/
+            }
+        }
+    )
     if (response.data.code === 200) {
         await removeCookie('userInfo');
         window.location.replace('/');
     } else {
+        console.log(cookies);
         console.log(response);
     }
 }
