@@ -70,8 +70,6 @@ const onClickHandler = async ([cookies, getCookies, removeCookie]) => {
             }
         }
     )
-
-    alert(JSON.stringify(response));
     if (response.data.code === 200) {
         await removeCookie('userInfo');
         window.location.replace('/');

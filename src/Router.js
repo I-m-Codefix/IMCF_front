@@ -31,7 +31,9 @@ function Router() {
                 <Route path="pwdchange" element={<Pwdchangepage />} />
                 <Route path="email" element={<Emailpage />} />
                 <Route path="contentprovide" element={<Cpapage />} />
-                <Route path="infomovie" element={<Moviedescriptionpage />} />
+                <Route path="infomovie" element={<Moviedescriptionpage />}>
+                    <Route path=":movieName" element={<Moviedescriptionpage />} />
+                </Route>
                 <Route path="registmovie" element={<Movieapplicationpage />} />
                 <Route path="registlive" element={<Liveapplicationpage />} />
                 <Route path="playscreen_fullpage" element={<Playscreen_fullpage />} />

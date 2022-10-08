@@ -1,3 +1,6 @@
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom"
+
 const posterStyle = {
     display: "flex",
     flexDirection: "column",
@@ -20,9 +23,12 @@ const movieTitle = {
     color: "white"
 }
 
-export default function PosterComponent(post, post_link) {
+export default function PosterComponent(post) {
+    const go = (link) => {
+        window.location.href = link;
+    }
     return (
-        <div style={posterStyle} href={post_link}>
+        <div style={posterStyle} onClick={() => go(post.post_link)}>
             <div style={imgStyle}>
                 <div>영화 이미지</div>
             </div>

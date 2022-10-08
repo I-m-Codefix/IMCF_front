@@ -25,18 +25,18 @@ function Mainpage() {
             <div style={mainStyle}>
                 <Container style={movieBox}>
                     <Row style={rowStyle}>
-                        <Col><PosterComponent name="영화제목1" post_link="/"/></Col>
-                        <Col><PosterComponent name="영화제목2" post_link="/"/></Col>
-                        <Col><PosterComponent name="영화제목3" /></Col>
-                        <Col><PosterComponent name="영화제목4" /></Col>
-                        <Col><PosterComponent name="영화제목5" /></Col>
+                        <Col><PosterComponent name="영화제목1" post_link="/infomovie/영화제목1"/></Col>
+                        <Col><PosterComponent name="영화제목2" post_link="/infomovie/영화제목2"/></Col>
+                        <Col><PosterComponent name="영화제목3" post_link="/infomovie/영화제목3" /></Col>
+                        <Col><PosterComponent name="영화제목4" post_link="/infomovie/영화제목4" /></Col>
+                        <Col><PosterComponent name="영화제목5" post_link="/infomovie/영화제목5" /></Col>
                     </Row>
                     <Row style={rowStyle}>
-                        <Col><PosterComponent name="영화제목6" /></Col>
-                        <Col><PosterComponent name="영화제목7" /></Col>
-                        <Col><PosterComponent name="영화제목8" /></Col>
-                        <Col><PosterComponent name="영화제목9" /></Col>
-                        <Col><PosterComponent name="영화제목10" /></Col>
+                        <Col><PosterComponent name="영화제목6" post_link="/infomovie/영화제목6" /></Col>
+                        <Col><PosterComponent name="영화제목7" post_link="/infomovie/영화제목7" /></Col>
+                        <Col><PosterComponent name="영화제목8" post_link="/infomovie/영화제목8" /></Col>
+                        <Col><PosterComponent name="영화제목9" post_link="/infomovie/영화제목9" /></Col>
+                        <Col><PosterComponent name="영화제목10" post_link="/infomovie/영화제목10" /></Col>
                     </Row>
                 </Container>
             </div>
