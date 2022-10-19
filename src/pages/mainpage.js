@@ -1,6 +1,8 @@
-import { Breadcrumb, Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import LayoutComponent from "../layouts/layoutComponent";
 import PosterComponent from "../components/postercomponent";
+import { useCookies } from 'react-cookie';
+import { Axios } from "../apis/utils/index";
 
 const mainStyle = {
     display: "flex",
@@ -19,7 +21,25 @@ const movieBox = {
     height: "50%"
 }
 
+const whiteStyle = {
+    color: "white"
+}
+
+const serviceList = async (token) => {
+    const response = await Axios.get('/service/ott/stream?categoryId=6', {
+        headers: {
+            Authorization: token,
+        }
+    });
+    //console.log(response);
+    return response.data.results;
+};
+
 function Mainpage() {
+    /*const [cookies, getCookies, removeCookie] = useCookies(['userInfo']);
+    const token = cookies.userInfo.token;
+    console.log(token);*/
+
     return (
         <LayoutComponent>
             <div style={mainStyle}>

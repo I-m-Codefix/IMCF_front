@@ -3,22 +3,41 @@ import PosterComponent from "./postercomponent";
 import "../styles/Components/inputComponent.scss"
 import ReviewComponent from "./reviewcomponent";
 
-const rowStyle = {
-    height: "50%",
-    padding: "10px"
+const mainStyle = {
+    width: "100%",
+    height: "90%",
+    marginBottom: "10%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+}
+
+const colStyle = {
+    width: "100%",
+    height: "100%",
+    padding: "50px 0"
 }
 
 export default function TabContentTitle(tabs) {
     if (tabs.num === "0") {
         return (
-            <ReviewComponent />
+            <div style={mainStyle}>
+                <ReviewComponent />
+            </div>
         );
     } else if (tabs.num === "1") {
         return (
-            <Row style={rowStyle}>
-                <Col><PosterComponent name="영화제목1" /></Col>
-                <Col><PosterComponent name="영화제목2" /></Col>
-                <Col><PosterComponent name="영화제목3" /></Col>
-            </Row>);
+            <div style={mainStyle}>
+                <div style={colStyle}>
+                    <PosterComponent name="영화제목1" />
+                </div>
+                <div style={colStyle}>
+                    <PosterComponent name="영화제목2" />
+                </div>
+                <div style={colStyle}>
+                    <PosterComponent name="영화제목3" />
+                </div>
+            </div>
+        );
     }
 }

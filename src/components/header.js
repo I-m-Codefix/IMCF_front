@@ -64,10 +64,15 @@ export default function Header() {
     const [cookies, getCookies, removeCookie] = useCookies(['userInfo']);
     const username = cookies.userInfo?.name;
     const thumbnail = cookies.userInfo?.thumb;
+
+    const goHome = () => {
+        window.location.href = "/main";
+    }
+
     return (
         <div style={headerStyle}>
             <div style={wrapperStyle}>
-                <img src={logo} style={logoStyle} />
+                <img src={logo} style={logoStyle} onClick={goHome}/>
                 <div style={searchStyle}>
                     <BsSearch style={iconStyle} />
                     <InputGroupComponent props="검색" />

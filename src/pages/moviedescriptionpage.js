@@ -14,15 +14,15 @@ const mainStyle = {
 }
 
 const rowStyle = {
+    display: "flex",
     height: "100%",
     width: "100%",
-    padding: "10px"
 }
 
 const movieBox = {
     display: "flex",
     width: "200px",
-    height: "200px"
+    height: "100%"
 }
 
 const cardStyle = {
@@ -31,6 +31,7 @@ const cardStyle = {
     alignItems: "center",
     justifyContent: "center",
     width: "50%",
+    height: "90%",
     padding: "50px",
     background: "rgba(154, 140, 152, 0.8)",
     borderRadius: "50px",
@@ -43,8 +44,9 @@ const labelStyle = {
 
 const headStyle = {
     width: "100%",
+    height: "25%",
     display: "flex",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
 }
 
 const infoStyle = {
@@ -57,21 +59,24 @@ const infoStyle = {
 
 const buttonwrapper = {
     display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
     width: "100%",
-    padding: "50px"
+    height: "7%",
+    padding: "5px"
 }
 const chageBox = {
-    border: "1px solid red",
-    display: "flex",
     width: "100%",
+    height: "68%"
 }
+
+const navStyle = {
+    height: "auto"
+}
+
 function TabContent(props) {
     if (props.clickedTab === 0) {
-        return (<TabContentTitle className="mt-5" num = "0" /> );
+        return (<TabContentTitle num = "0" /> );
     } else if (props.clickedTab === 1){
-        return (<TabContentTitle className="mt-5" num = "1"/> );
+        return (<TabContentTitle num = "1"/> );
     }
 }
 
@@ -99,11 +104,11 @@ function Moviedescriptionpage() {
                         </div>
                     </div>
                     <div style={chageBox}>
-                        <Nav className="mt-5" variant="tabs" defaultActiveKey="0">
-                            <Nav.Item>
+                        <Nav style={navStyle} variant="tabs" defaultActiveKey="0" >
+                            <Nav.Item variant="a">
                                 <Nav.Link eventKey="0" onClick={()=>{setClickedTab(0)}}>리뷰 작성</Nav.Link>
                             </Nav.Item>
-                            <Nav.Item>
+                            <Nav.Item variant="a">
                                 <Nav.Link eventKey="1" onClick={()=>{setClickedTab(1)}}>관련 영화</Nav.Link>
                             </Nav.Item>
                         </Nav>
