@@ -108,7 +108,6 @@ const toMain = () => {
 function Loginpage({ history }) {
     const [cookies, setCookie, removeCookie] = useCookies(['userInfo']);
     let params = new URLSearchParams(window.location.search);
-
     if (params.get('token') !== null) {
         let token = params.get('token');
         console.log(`token: ${params}`);
@@ -120,7 +119,6 @@ function Loginpage({ history }) {
             platformType: params.get('platformType'),
             expireTime: params.get('expireTime')
         });
-
         // 꼼수 - 컴포넌트 이벤트에 괄호를 넣으면 렌더링 되는 즉시 실행.
         return (
             <div onClick={toMain()}>

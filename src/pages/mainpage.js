@@ -67,7 +67,7 @@ const categoryList = (movieData) => {
     return (
         <div style={rowStyle}>
             {movieData.map((item) => (
-                <div key={item.id} style={colStyle}><PosterComponent name={item.ottName} post_link={`/infomovie/${item.ottName}`} /></div>
+                <div key={item.id} style={colStyle}><PosterComponent name={item.ottName} post_link={`/infomovie/${item.id}`} /></div>
             ))}
         </div>
     );
@@ -87,7 +87,7 @@ function Mainpage() {
         },
         {
             queryKey: "independent", 
-            queryFn: () => loadMovie(token, 13)
+            queryFn: () => loadMovie(token, 17)
         }
     ]);
 

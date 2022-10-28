@@ -1,9 +1,13 @@
 import { Card, Nav } from "react-bootstrap";
 import { useState } from "react";
+import { useCookies } from 'react-cookie';
 import LayoutComponent from "../layouts/layoutComponent";
 import PosterComponent from "../components/postercomponent";
 import ButtonComponent from "../components/buttoncomponent";
 import TabContentTitle from "../components/tabcontenttitle";
+import { useParams } from "react-router";
+import { loadMovieComment } from '../apis/api/movie';
+import { useQuery } from "react-query";
 
 const mainStyle = {
     display: "flex",
@@ -72,6 +76,10 @@ const navStyle = {
     height: "auto"
 }
 
+const test = (movie) => {
+    console.log(movie);
+}
+
 function TabContent(props) {
     if (props.clickedTab === 0) {
         return (<TabContentTitle num = "0" /> );
@@ -83,10 +91,24 @@ function TabContent(props) {
 function Moviedescriptionpage() {
     let [clickedTab, setClickedTab] = useState(0)
 
+    const [cookies, getCookies, removeCookie] = useCookies(['userInfo']);
+    const token = cookies.userInfo.token;
+
     const handlerChange = (event) => {
         setClickedTab(event.target.value);
     }
+    const movieId = useParams();
+    console.log(movieId.movieId);
+    const {isLoading, data, isError } = useQuery("result", loadMovieComment(token, movieId.movieId));
 
+    // const { status, data, error } = useQuery("moviecomment", result);
+    if (isError) {
+        return <span>Error: {isError.message}</span>;
+    }
+
+    if (isLoading) {
+        return (<span>Loading...</span>);
+    }
     return (
         <LayoutComponent>
             <div style={mainStyle}>
@@ -117,12 +139,12 @@ function Moviedescriptionpage() {
                     <div style={buttonwrapper}>
                         <ButtonComponent btn_text="뒤로가기" btn_link="/main" />
                         <ButtonComponent btn_text="재생" btn_link="playscreen_fullpage" />
+                        <button onClick={()=>{test(data.result)}}>asd</button>
                     </div>
                 </Card>
             </div>
         </LayoutComponent >
     );
-
 }
 
 export default Moviedescriptionpage;

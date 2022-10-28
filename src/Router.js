@@ -32,7 +32,7 @@ function Router() {
                 <Route path="email" element={<Emailpage />} />
                 <Route path="contentprovide" element={<Cpapage />} />
                 <Route path="infomovie" element={<Moviedescriptionpage />}>
-                    <Route path=":movieName" element={<Moviedescriptionpage />} />
+                    <Route path=":movieId" element={<Moviedescriptionpage />} />
                 </Route>
                 <Route path="registmovie" element={<Movieapplicationpage />} />
                 <Route path="registlive" element={<Liveapplicationpage />} />
@@ -40,7 +40,6 @@ function Router() {
                 <Route path="mailalarm" element={<Mailalarm />} />
                 <Route path="playscreen_windowpage" element={<Playscreen_windowpage />} />
                 <Route path="*" element={<Notfound />} />
-                
                 <Route path="test" element={<Test />} />
                 <Route path="test2" element={<Test2 />} />
             </Routes>
