@@ -78,6 +78,7 @@ const navStyle = {
 
 const test = (movie) => {
     console.log(movie);
+    return { data: "data" };
 }
 
 function TabContent(props) {
@@ -97,54 +98,57 @@ function Moviedescriptionpage() {
     const handlerChange = (event) => {
         setClickedTab(event.target.value);
     }
-    const movieId = useParams();
-    console.log(movieId.movieId);
-    const {isLoading, data, isError } = useQuery("result", loadMovieComment(token, movieId.movieId));
 
-    // const { status, data, error } = useQuery("moviecomment", result);
+    const movie = useParams();
+
+    const { isLoading, isError, data } = useQuery("result", () => loadMovieComment(token, movie.movieId), {
+        retry: 0,
+    });
+
     if (isError) {
-        return <span>Error: {isError.message}</span>;
+        return (<span>Error: {isError.message}</span>);
     }
 
     if (isLoading) {
         return (<span>Loading...</span>);
-    }
-    return (
-        <LayoutComponent>
-            <div style={mainStyle}>
-                <Card style={cardStyle}>
-                    <div style={headStyle}>
-                        <div style={movieBox}>
-                            <div style={rowStyle}>
-                                <PosterComponent name="영화제목" />
+    } else {
+        return (
+            <LayoutComponent>
+                <div style={mainStyle}>
+                    <Card style={cardStyle}>
+                        <div style={headStyle}>
+                            <div style={movieBox}>
+                                <div style={rowStyle}>
+                                    <PosterComponent name="영화제목" />
+                                </div>
+                            </div>
+                            <div style={infoStyle}>
+                                <label style={labelStyle}>감독 이름</label>
+                                <label style={labelStyle}>출연진</label>
+                                <label style={labelStyle}>영화 설명</label>
                             </div>
                         </div>
-                        <div style={infoStyle}>
-                            <label style={labelStyle}>감독 이름</label>
-                            <label style={labelStyle}>출연진</label>
-                            <label style={labelStyle}>영화 설명</label>
+                        <div style={chageBox}>
+                            <Nav style={navStyle} variant="tabs" defaultActiveKey="0" >
+                                <Nav.Item variant="a">
+                                    <Nav.Link eventKey="0" onClick={()=>{setClickedTab(0)}}>리뷰 작성</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item variant="a">
+                                    <Nav.Link eventKey="1" onClick={()=>{setClickedTab(1)}}>관련 영화</Nav.Link>
+                                </Nav.Item>
+                            </Nav>
+                            <TabContent clickedTab={clickedTab} />
                         </div>
-                    </div>
-                    <div style={chageBox}>
-                        <Nav style={navStyle} variant="tabs" defaultActiveKey="0" >
-                            <Nav.Item variant="a">
-                                <Nav.Link eventKey="0" onClick={()=>{setClickedTab(0)}}>리뷰 작성</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item variant="a">
-                                <Nav.Link eventKey="1" onClick={()=>{setClickedTab(1)}}>관련 영화</Nav.Link>
-                            </Nav.Item>
-                        </Nav>
-                        <TabContent clickedTab={clickedTab} />
-                    </div>
-                    <div style={buttonwrapper}>
-                        <ButtonComponent btn_text="뒤로가기" btn_link="/main" />
-                        <ButtonComponent btn_text="재생" btn_link="playscreen_fullpage" />
-                        <button onClick={()=>{test(data.result)}}>asd</button>
-                    </div>
-                </Card>
-            </div>
-        </LayoutComponent >
-    );
+                        <div style={buttonwrapper}>
+                            <ButtonComponent btn_text="뒤로가기" btn_link="/main" />
+                            <ButtonComponent btn_text="재생" btn_link="playscreen_fullpage" />
+                            <button onClick={()=>{test(data.result)}}>asd</button>
+                        </div>
+                    </Card>
+                </div>
+            </LayoutComponent >
+        );
+    }
 }
 
 export default Moviedescriptionpage;
