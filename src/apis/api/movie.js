@@ -1,8 +1,18 @@
 // 영화 api 요청 및 응답
 import { Axios } from '../utils/index';
+import { useCookies } from 'react-cookie';
 
 // 영화 정보 가져오기
-export const loadMovie = async () => {
-    const res = await Axios.get('/movie');
-    return res;
+export const loadMovie = async (token, categoryId) => {
+    //console.log("token = ", token);
+    const res = await Axios.get(`/service/ott/stream?categoryId=${categoryId}`, {
+        headers: {
+            Authorization: token
+        }
+    });
+    if (res.data.code === 200) {
+        return res.data.results;
+    } else {
+        return res.data;
+    }
 }

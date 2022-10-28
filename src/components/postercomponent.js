@@ -6,7 +6,7 @@ const posterStyle = {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    width: "100%",
+    width: "200px",
     height: "100%",
 }
 
@@ -16,11 +16,16 @@ const imgStyle = {
     justifyContent: "center",
     width: "60%",
     height: "100%",
-    background: "yellow",
+}
+
+const imgSrc = {
+    width: "100%",
+    height: "160px"
 }
 
 const movieTitle = {
-    color: "white"
+    color: "white",
+    padding: "8px"
 }
 
 export default function PosterComponent(post) {
@@ -30,7 +35,7 @@ export default function PosterComponent(post) {
     return (
         <div style={posterStyle} onClick={() => go(post.post_link)}>
             <div style={imgStyle}>
-                <div>영화 이미지</div>
+                <img style={imgSrc} src="https://i.ibb.co/GMkstKT/lalaland.jpg" alt="lalaland" border="0" />
             </div>
             <div style={movieTitle}>{post.name}</div>
         </div>
