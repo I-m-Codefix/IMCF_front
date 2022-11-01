@@ -22,7 +22,7 @@ export default function TabContentTitle(tabs) {
     if (tabs.num === "0") {
         return (
             <div style={mainStyle}>
-                <ReviewComponent />
+                <ReviewComponent movieNum={tabs.movieNum} />
             </div>
         );
     } else if (tabs.num === "1") {

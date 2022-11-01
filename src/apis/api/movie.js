@@ -24,7 +24,7 @@ export const loadMovieComment = async (token, movieId) => {
         }
     });
     if (res.data.code === 200) {
-        return res.data.results;
+        return res.data.result;
     } else {
         return res.data;
     }

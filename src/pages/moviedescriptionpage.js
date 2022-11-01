@@ -8,11 +8,12 @@ import TabContentTitle from "../components/tabcontenttitle";
 import { useParams } from "react-router";
 import { loadMovieComment } from '../apis/api/movie';
 import { useQuery } from "react-query";
+import ReviewComponent from "../components/reviewcomponent";
 
 const mainStyle = {
     display: "flex",
     alignItems: "center",
-    justifyContent: "center", 
+    justifyContent: "center",
     width: "100%",
     height: "100%",
 }
@@ -45,6 +46,12 @@ const labelStyle = {
     color: "white",
     padding: "0 10px 0 0"
 }
+
+const colStyle = {
+    width: "200px",
+    height: "100%"
+}
+
 
 const headStyle = {
     width: "100%",
@@ -83,9 +90,9 @@ const test = (movie) => {
 
 function TabContent(props) {
     if (props.clickedTab === 0) {
-        return (<TabContentTitle num = "0" /> );
-    } else if (props.clickedTab === 1){
-        return (<TabContentTitle num = "1"/> );
+        return (<TabContentTitle num="0" movieNum={props.movieNum} />);
+    } else if (props.clickedTab === 1) {
+        return (<TabContentTitle num="1" />);
     }
 }
 
@@ -99,56 +106,44 @@ function Moviedescriptionpage() {
         setClickedTab(event.target.value);
     }
 
-    const movie = useParams();
+    const movieNum = useParams();
 
-    const { isLoading, isError, data } = useQuery("result", () => loadMovieComment(token, movie.movieId), {
-        retry: 0,
-    });
-
-    if (isError) {
-        return (<span>Error: {isError.message}</span>);
-    }
-
-    if (isLoading) {
-        return (<span>Loading...</span>);
-    } else {
-        return (
-            <LayoutComponent>
-                <div style={mainStyle}>
-                    <Card style={cardStyle}>
-                        <div style={headStyle}>
-                            <div style={movieBox}>
-                                <div style={rowStyle}>
-                                    <PosterComponent name="영화제목" />
-                                </div>
-                            </div>
-                            <div style={infoStyle}>
-                                <label style={labelStyle}>감독 이름</label>
-                                <label style={labelStyle}>출연진</label>
-                                <label style={labelStyle}>영화 설명</label>
+    return (
+        <LayoutComponent>
+            <div style={mainStyle}>
+                <Card style={cardStyle}>
+                    <div style={headStyle}>
+                        <div style={movieBox}>
+                            <div style={rowStyle}>
+                                {/*<PosterComponent name={} thumbnail={} />*/}
                             </div>
                         </div>
-                        <div style={chageBox}>
-                            <Nav style={navStyle} variant="tabs" defaultActiveKey="0" >
-                                <Nav.Item variant="a">
-                                    <Nav.Link eventKey="0" onClick={()=>{setClickedTab(0)}}>리뷰 작성</Nav.Link>
-                                </Nav.Item>
-                                <Nav.Item variant="a">
-                                    <Nav.Link eventKey="1" onClick={()=>{setClickedTab(1)}}>관련 영화</Nav.Link>
-                                </Nav.Item>
-                            </Nav>
-                            <TabContent clickedTab={clickedTab} />
+                        <div style={infoStyle}>
+                            <label style={labelStyle}>감독 이름</label>
+                            <label style={labelStyle}>출연진</label>
+                            <label style={labelStyle}>영화 설명</label>
                         </div>
-                        <div style={buttonwrapper}>
-                            <ButtonComponent btn_text="뒤로가기" btn_link="/main" />
-                            <ButtonComponent btn_text="재생" btn_link="playscreen_fullpage" />
-                            <button onClick={()=>{test(data.result)}}>asd</button>
-                        </div>
-                    </Card>
-                </div>
-            </LayoutComponent >
-        );
-    }
+                    </div>
+                    <div style={chageBox}>
+                        <Nav style={navStyle} variant="tabs" defaultActiveKey="0" >
+                            <Nav.Item variant="a">
+                                <Nav.Link eventKey="0" onClick={() => { setClickedTab(0) }}>리뷰 작성</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item variant="a">
+                                <Nav.Link eventKey="1" onClick={() => { setClickedTab(1) }}>관련 영화</Nav.Link>
+                            </Nav.Item>
+                        </Nav>
+                        <TabContent clickedTab={clickedTab} movieNum={movieNum.movieId} />
+                    </div>
+
+                    <div style={buttonwrapper}>
+                        <ButtonComponent btn_text="뒤로가기" btn_link="/main" />
+                        <ButtonComponent btn_text="재생" btn_link="playscreen_fullpage" />
+                    </div>
+                </Card>
+            </div>
+        </LayoutComponent >
+    );
 }
 
 export default Moviedescriptionpage;

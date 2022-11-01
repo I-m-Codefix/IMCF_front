@@ -67,7 +67,7 @@ const categoryList = (movieData) => {
     return (
         <div style={rowStyle}>
             {movieData.map((item) => (
-                <div key={item.id} style={colStyle}><PosterComponent name={item.ottName} post_link={`/infomovie/${item.id}`} /></div>
+                <div key={item.id} style={colStyle}><PosterComponent name={item.ottName} thumbnail={item.ottThumbnail} post_link={`/infomovie/${item.id}`} /></div>
             ))}
         </div>
     );
