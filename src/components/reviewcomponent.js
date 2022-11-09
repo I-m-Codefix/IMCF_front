@@ -50,8 +50,8 @@ const buttonboxStyle = {
 
 const profileimg = {
     display: "flex",
-    width: "25px",
-    height: "25px"
+    width: "50px",
+    height: "50px",
 }
 
 const boxStyle = {
