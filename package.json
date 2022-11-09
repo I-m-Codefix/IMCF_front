@@ -29,7 +29,7 @@
   },
   "scripts": {
     "lint": "eslint **/*",
-    "dev": "export PORT=8080 && react-scripts start",
+    "dev": "set PORT=5000 && react-scripts start",
     "prestart": "react-scripts build",
     "start": "pm2 serve build 5000 --spa --name imcf-front-server",
     "restart": "pm2 restart imcf-front-server",

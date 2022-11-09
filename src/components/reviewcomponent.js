@@ -62,7 +62,7 @@ const boxStyle = {
 }
 
 const reviewList = (reviewData) => {
-    const loadreview =()=> (reviewData.reply.map((comment) => {
+    const loadreview =()=> (reviewData.reply && reviewData.reply.map((comment) => {
         return (
             <div key={comment.id}>
                 <div>
