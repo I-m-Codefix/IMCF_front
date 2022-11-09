@@ -3,7 +3,7 @@ import TestLayout from "../layouts/TestLayout";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Subreviewtest from "../components/Subreviewtest";
-import Reviewtest from "../components/reviewtest";
+import Reviewtest from "../components/Reviewtest";
 
 
 const review = {

@@ -4,6 +4,7 @@ import { useQueries, useQuery } from "react-query";
 import { loadMovieComment } from '../apis/api/movie';
 import { useCookies } from 'react-cookie';
 import { useParams } from "react-router";
+import Subreviewcomponent from "./Subreviewcomponent";
 
 const rowStyle = {
     display: "flex",
@@ -47,39 +48,44 @@ const buttonboxStyle = {
     height: "100%"
 }
 
+const profileimg = {
+    display: "flex",
+    width: "25px",
+    height: "25px"
+}
+
+const boxStyle = {
+    width: "400px",
+    height: "700px",
+    border: "1px solid red",
+    background: "white"
+}
+
 const reviewList = (reviewData) => {
-    console.log("받은 데이터 : ", reviewData);
-    if (reviewData !== undefined){
+    const loadreview =()=> (reviewData.reply.map((comment) => {
         return (
-            <div style={rowStyle}>
-                {reviewData.map((item) => {(
-                    <div key={item.id} style={colStyle}>
-                        <p>
-                            ID : {item.id}<br />
-                            Name : {item.writerName}<br />
-                            content : {item.content}<br />
-                        </p>
-                        {() => {
-                            if(item.subCommentList.length >= 1) {
-                                item.subCommentList.map((subComment) => {
-                                    <div key={subComment.id}>
-                                        {/* 
-                                            ... 
-                                            모양을 보아하니 재귀함수다.
-                                            그럼 재귀 함수로 계속 호출해서 컴포넌트 생성하는거 만들어야 겠지?
-                                            FaceBook 답글남기기 기능이 재귀 컴포넌트 생성임.
-                                            예제 있을 거니까 보고 테스트 채널에다가 따라하면서 완성해와.
-                                            깃작동되나
-                                        */}
-                                    </div>
-                                });
-                            }
-                        }}
-                    </div>
-                )})}
+            <div key={comment.id}>
+                <div>
+                    {/* 프로필 이미지 */}
+                    <div style={profileimg}>{comment.writerProfileImageUri}</div>
+                    {/* 작성자 이름 */}
+                    {comment.writerName}
+                    <br />
+                    {/* 코멘트 */}
+                    {comment.content}
+                    <br/>
+                    {/* 대댓글 */}
+                    <Subreviewcomponent reply={comment.subCommentList} />
+                </div>
             </div>
-        );
-    } else {
+        )
+    }))
+    if (reviewData !== undefined) return (
+        <div style={boxStyle}>
+            {loadreview()}
+        </div>
+    )
+    else {
         return (
             <div style={rowStyle}>
                 <span>아직 리뷰가 작성되지 않았습니다.</span>
