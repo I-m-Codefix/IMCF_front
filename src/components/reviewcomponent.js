@@ -82,6 +82,7 @@ const reviewList = (reviewData) => {
     }))
     if (reviewData !== undefined) return (
         <div style={boxStyle}>
+            {/* 댓글 출력 */}
             {loadreview()}
         </div>
     )
