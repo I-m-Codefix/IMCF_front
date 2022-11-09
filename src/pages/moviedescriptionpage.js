@@ -107,6 +107,7 @@ function Moviedescriptionpage() {
     }
 
     const movieNum = useParams();
+    console.log(movieNum);
 
     return (
         <LayoutComponent>
