@@ -2,63 +2,102 @@ import useStore from "../store/manager";
 import TestLayout from "../layouts/TestLayout";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-
-const TestStyle = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "center",
-  width: "300px",
-  height: "100px",
-}
-
-const setValueStyle = {
-  display: "flex",
-  flexDirection: "row",
-  alignItems: "center",
-  justifyContent: "center",
-  width: "300px",
-  height: "30px",
-}
-
-const inputStyle = {
-  display: "flex",
-  flexDirection: "row",
-  alignItems: "center",
-  justifyContent: "center",
-  width: "2000px",
-  height: "200px",
-}
+import Subreviewtest from "../components/Subreviewtest";
+import Reviewtest from "../components/reviewtest";
 
 
-const colorWhite = {
-  color: "white",
-}
+const review = {
+    "code": 200,
+    "response": "영화에 작성된 모든 댓글을 조회합니다.",
+    "result": [
+        {
+            "id": 8,
+            "content": "2번영상 댓글",
+            "useYn": "Y",
+            "writerId": 1,
+            "writerName": "안진용",
+            "writerProfileImageUri": "http://k.kakaocdn.net/dn/QIED2/btrKauiSmQQ/EODLii6AomU7bc7cgSWHRk/img_640x640.jpg",
+            "streamingId": 2,
+            "streamingName": "comic",
+            "subCommentList": [
+                {
+                    "id": 9,
+                    "content": "2번영상 댓글입니다",
+                    "useYn": "Y",
+                    "writerId": 2,
+                    "writerName": "박현춘",
+                    "writerProfileImageUri": "http://k.kakaocdn.net/dn/pokR9/btryRXaLKXT/LepEWkkQx3kVbQfsxZyhEk/img_640x640.jpg",
+                    "streamingId": 2,
+                    "streamingName": "comic",
+                    "subCommentList": []
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "content": "새로 추가된 댓글입니다. 22",
+            "useYn": "Y",
+            "writerId": 4,
+            "writerName": "17한범수",
+            "writerProfileImageUri": "http://k.kakaocdn.net/dn/RrDRg/btrK5w02PNV/R1yWSDfSO7V2A8b8dDUo5K/img_640x640.jpg",
+            "streamingId": 2,
+            "streamingName": "comic",
+            "subCommentList": []
+        },
+        {
+            "id": 13,
+            "content": "새로 추가된 댓글입니다. 22",
+            "useYn": "Y",
+            "writerId": 4,
+            "writerName": "17한범수",
+            "writerProfileImageUri": "http://k.kakaocdn.net/dn/RrDRg/btrK5w02PNV/R1yWSDfSO7V2A8b8dDUo5K/img_640x640.jpg",
+            "streamingId": 2,
+            "streamingName": "comic",
+            "subCommentList": []
+        },
+        {
+            "id": 15,
+            "content": "새로 추가된 댓글입니다. 22",
+            "useYn": "Y",
+            "writerId": 4,
+            "writerName": "17한범수",
+            "writerProfileImageUri": "http://k.kakaocdn.net/dn/RrDRg/btrK5w02PNV/R1yWSDfSO7V2A8b8dDUo5K/img_640x640.jpg",
+            "streamingId": 2,
+            "streamingName": "comic",
+            "subCommentList": []
+        },
+        {
+            "id": 16,
+            "content": "새로 추가된 댓글입니다. 33",
+            "useYn": "Y",
+            "writerId": 4,
+            "writerName": "17한범수",
+            "writerProfileImageUri": "http://k.kakaocdn.net/dn/RrDRg/btrK5w02PNV/R1yWSDfSO7V2A8b8dDUo5K/img_640x640.jpg",
+            "streamingId": 2,
+            "streamingName": "comic",
+            "subCommentList": []
+        },
+        {
+            "id": 17,
+            "content": "새로 추가된 댓글입니다. 44",
+            "useYn": "Y",
+            "writerId": 4,
+            "writerName": "17한범수",
+            "writerProfileImageUri": "http://k.kakaocdn.net/dn/RrDRg/btrK5w02PNV/R1yWSDfSO7V2A8b8dDUo5K/img_640x640.jpg",
+            "streamingId": 2,
+            "streamingName": "comic",
+            "subCommentList": []
+        }
+    ]
 
-let inputValue = 0;
-const onValue = (e) => {
-  inputValue = e.target.value;
 }
 
 function Test() {
-  let navigate = useNavigate();
-  const counter = useStore(state => state.counter);
-  const setValue = useStore(state => state.setValue);
-  const plus = useStore(state => state.plus);
   return (
     <TestLayout>
-      <h1 style={colorWhite}>테스트1</h1>
-      <div style={TestStyle}>
-        <div style={colorWhite}>{counter}</div>
-        <div style={setValueStyle}>
-          <div style={inputStyle}>
-            <input id="input_setvalue" onChange={onValue} />
-          </div>
-          <Button variant="success" id="input_setvalue" onClick={() => setValue(inputValue)}>적용</Button>
-        </div>
-        <Button variant="success" onClick={plus}>더하기</Button>
-        <Button variant="secondary" onClick={() => { navigate("/test2") }}>Test2</Button>
-      </div>
+      <Reviewtest reply={review.result}>
+
+      </Reviewtest>
     </TestLayout>
   );
 }
