@@ -22,6 +22,11 @@ const reviewListStyle = {
     overflow: "auto"
 }
 
+const reviewStyle = {
+    width: "100%",
+    minHeight: "128px"
+}
+
 const commentStyle = {
     display: "flex",
     width: "100%",
@@ -48,11 +53,6 @@ const inputboxStyle = {
     alignItems: "center",
     justifyContent: "center",
     padding: "0 10px"
-}
-
-const reviewStyle = {
-    width: "100%",
-    minHeight: "128px"
 }
 
 const buttonboxStyle = {
@@ -93,7 +93,7 @@ const boxStyle = {
 const reviewList = (reviewData) => {
     console.log("리뷰데이터 : ", reviewData);
     const loadreview =()=> (reviewData && reviewData.map((comment) => {
-        if (comment.subCommentList.length > 0) {
+        if (comment.subCommentList.length <= 0) {
             return (
                 <div key={comment.id} style={reviewStyle}>
                     {/* 프로필 이미지 */}
@@ -132,7 +132,7 @@ const reviewList = (reviewData) => {
                         {comment.content}
                     </div>
                     {/* 대댓글 */}
-                    <Subreviewcomponent reply={comment.subCommentList} />
+                    <Subreviewcomponent reply={comment.subCommentList} num={0} />
                 </div>
             )
         }
