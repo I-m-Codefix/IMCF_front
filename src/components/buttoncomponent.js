@@ -36,7 +36,7 @@ ButtonComponent.propsTypes = {
 
 ButtonComponent.defaultProps = {
     btn_text: '대체 텍스트',
-    //btn_link: ''
+    btn_link: ''
 }
 
 export default ButtonComponent;

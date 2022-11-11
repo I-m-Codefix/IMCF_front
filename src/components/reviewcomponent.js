@@ -1,10 +1,10 @@
 import ButtonComponent from "../components/buttoncomponent";
 import InputGroupComponent from "../components/inputgroupcomponent";
-import { useQueries, useQuery } from "react-query";
+import { useQuery } from "react-query";
 import { loadMovieComment } from '../apis/api/movie';
 import { useCookies } from 'react-cookie';
-import { useParams } from "react-router";
 import Subreviewcomponent from "./Subreviewcomponent";
+import { useEffect } from "react";
 
 const mainStyle = {
     display: "flex",
@@ -91,7 +91,6 @@ const boxStyle = {
 }
 
 const reviewList = (reviewData) => {
-    console.log("리뷰데이터 : ", reviewData);
     const loadreview =()=> (reviewData && reviewData.map((comment) => {
         if (comment.subCommentList.length <= 0) {
             return (
@@ -176,7 +175,7 @@ export default function ReviewComponent(props) {
                         <InputGroupComponent placeholder="리뷰작성"></InputGroupComponent>
                     </div>
                     <div style={buttonboxStyle}>
-                        <ButtonComponent btn_text="작성" btn_link="/infomovie" /><br />
+                        <ButtonComponent btn_text="작성" />
                     </div>
                 </div>
             </div>

@@ -83,11 +83,6 @@ const navStyle = {
     height: "auto"
 }
 
-const test = (movie) => {
-    console.log(movie);
-    return { data: "data" };
-}
-
 function TabContent(props) {
     if (props.clickedTab === 0) {
         return (<TabContentTitle num="0" movieNum={props.movieNum} />);
@@ -102,12 +97,8 @@ function Moviedescriptionpage() {
     const [cookies, getCookies, removeCookie] = useCookies(['userInfo']);
     const token = cookies.userInfo.token;
 
-    const handlerChange = (event) => {
-        setClickedTab(event.target.value);
-    }
-
     const movieNum = useParams();
-    console.log(movieNum);
+    console.log("영화 번호 : ", movieNum);
 
     return (
         <LayoutComponent>
@@ -139,7 +130,7 @@ function Moviedescriptionpage() {
 
                     <div style={buttonwrapper}>
                         <ButtonComponent btn_text="뒤로가기" btn_link="/main" />
-                        <ButtonComponent btn_text="재생" btn_link="playscreen_fullpage" />
+                        <ButtonComponent btn_text="재생" btn_link={`/play/${movieNum.movieId}`} />
                     </div>
                 </Card>
             </div>

@@ -1,9 +1,4 @@
-import useStore from "../store/manager";
 import TestLayout from "../layouts/TestLayout";
-import { Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import Reviewtest from "../components/reviewtest";
-
 
 const review = {
     "code": 200,
@@ -94,9 +89,7 @@ const review = {
 function Test() {
   return (
     <TestLayout>
-      <Reviewtest reply={review.result}>
-
-      </Reviewtest>
+        <div></div>
     </TestLayout>
   );
 }
