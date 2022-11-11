@@ -12,7 +12,6 @@ import Cpapage from "./pages/cpapage";
 import Moviedescriptionpage from "./pages/moviedescriptionpage";
 import Movieapplicationpage from "./pages/movieapplicationpage";
 import Liveapplicationpage from "./pages/liveapplicationpage";
-import Playscreen_fullpage from "./pages/playscreen_fullpage";
 import Playscreen_windowpage from "./pages/playscreen_windowpage";
 import Memberwithdrawalpage from "./pages/memberwithdrawalpage";
 import Test from "./pages/test";
@@ -36,9 +35,10 @@ function Router() {
                 </Route>
                 <Route path="registmovie" element={<Movieapplicationpage />} />
                 <Route path="registlive" element={<Liveapplicationpage />} />
-                <Route path="playscreen_fullpage" element={<Playscreen_fullpage />} />
                 <Route path="mailalarm" element={<Mailalarm />} />
-                <Route path="playscreen_windowpage" element={<Playscreen_windowpage />} />
+                <Route path="play" element={<Playscreen_windowpage />}>
+                    <Route path=":movieId" element={<Playscreen_windowpage />} />
+                </Route>
                 <Route path="*" element={<Notfound />} />
                 <Route path="test" element={<Test />} />
                 <Route path="test2" element={<Test2 />} />

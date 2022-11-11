@@ -2,10 +2,8 @@ import React from 'react'
 
 const boxStyle = {
     display: "flex",
-    width: "400px",
+    width: "100%",
     height: "50px",
-    border: "1px solid black",
-    background: "white"
 }
 
 export default function Subreviewcomponet(props) {

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Hls from 'hls.js';
 
-export default function HLsSource(props) {
+export default function HLSSource(props) {
     const hls = new Hls();
 
     useEffect(() => {
@@ -11,8 +11,8 @@ export default function HLsSource(props) {
             hls.loadSource(src);
             hls.attachMedia(video);
             hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                video.muted = true;
                 video.play();
-                video.muted = false;
             });
         }
 

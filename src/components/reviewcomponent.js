@@ -6,7 +6,7 @@ import { useCookies } from 'react-cookie';
 import { useParams } from "react-router";
 import Subreviewcomponent from "./Subreviewcomponent";
 
-const rowStyle = {
+const mainStyle = {
     display: "flex",
     flexDirection: "column",
     width: "100%",
@@ -19,12 +19,25 @@ const reviewListStyle = {
     height: "88%",
     padding: "10px",
     boder: "4px solid red",
+    overflow: "auto"
 }
 
 const commentStyle = {
     display: "flex",
     width: "100%",
-    height: "12%",
+    height: "80px",
+    margin: "16px 0",
+    padding: "8px",
+    border: "1px solid #030303",
+    background: "#F3F3F3"
+}
+
+const editCommentStyle = {
+    display: "flex",
+    width: "100%",
+    padding: "16px 0",
+    margin: "32px 0 0 0",
+    border: "1px solid #030303",
 }
 
 const inputboxStyle = {
@@ -37,9 +50,9 @@ const inputboxStyle = {
     padding: "0 10px"
 }
 
-const colStyle = {
-    width: "200px",
-    height: "100%"
+const reviewStyle = {
+    width: "100%",
+    minHeight: "128px"
 }
 
 const buttonboxStyle = {
@@ -48,37 +61,81 @@ const buttonboxStyle = {
     height: "100%"
 }
 
+const profileStyle = {
+    display: "flex",
+    alignItems: "center",
+    width: "100%",
+    height: "48px"
+}
+
 const profileimg = {
     display: "flex",
-    width: "50px",
-    height: "50px",
+    border: "1px solid #030303",
+    borderRadius: "25px",
+    width: "48px",
+    height: "48px",
+    margin: "0 16px 0 8px"
+}
+
+const profileName = {
+    textAlign: "center",
+    color: "white",
+    border: "1px solid #3F3F3F",
+    borderRadius: "8px",
+    padding: "5px"
 }
 
 const boxStyle = {
-    width: "400px",
-    height: "700px",
-    border: "1px solid red",
-    background: "white"
+    width: "100%",
+    height: "auto",
 }
 
 const reviewList = (reviewData) => {
-    const loadreview =()=> (reviewData.reply && reviewData.reply.map((comment) => {
-        return (
-            <div key={comment.id}>
-                <div>
+    console.log("리뷰데이터 : ", reviewData);
+    const loadreview =()=> (reviewData && reviewData.map((comment) => {
+        if (comment.subCommentList.length > 0) {
+            return (
+                <div key={comment.id} style={reviewStyle}>
                     {/* 프로필 이미지 */}
-                    <div style={profileimg}>{comment.writerProfileImageUri}</div>
-                    {/* 작성자 이름 */}
-                    {comment.writerName}
-                    <br />
+                    <div style={profileStyle}>
+                        <img 
+                            style={profileimg}
+                            src={comment.writerProfileImageUri}
+                        />
+                        {/* 작성자 이름 */}
+                        <div style={profileName}>
+                            {comment.writerName}
+                        </div>
+                    </div>
                     {/* 코멘트 */}
-                    {comment.content}
-                    <br/>
+                    <div style={commentStyle}>
+                        {comment.content}
+                    </div>
+                </div>
+            );
+        } else {
+            return (
+                <div key={comment.id} style={reviewStyle}>
+                    {/* 프로필 이미지 */}
+                    <div style={profileStyle}>
+                        <img 
+                            style={profileimg}
+                            src={comment.writerProfileImageUri}
+                        />
+                        {/* 작성자 이름 */}
+                        <div style={profileName}>
+                            {comment.writerName}
+                        </div>
+                    </div>
+                    {/* 코멘트 */}
+                    <div style={commentStyle}>
+                        {comment.content}
+                    </div>
                     {/* 대댓글 */}
                     <Subreviewcomponent reply={comment.subCommentList} />
                 </div>
-            </div>
-        )
+            )
+        }
     }))
     if (reviewData !== undefined) return (
         <div style={boxStyle}>
@@ -88,7 +145,7 @@ const reviewList = (reviewData) => {
     )
     else {
         return (
-            <div style={rowStyle}>
+            <div style={mainStyle}>
                 <span>아직 리뷰가 작성되지 않았습니다.</span>
             </div>
         );
@@ -110,12 +167,11 @@ export default function ReviewComponent(props) {
         return (<span>Loading...</span>);
     } else {
         return (
-            <div style={rowStyle}>
+            <div style={mainStyle}>
                 <div style={reviewListStyle}>
-                    리뷰 리스트
+                    {reviewList(data)}
                 </div>
-                {reviewList(data)}
-                <div style={commentStyle}>
+                <div style={editCommentStyle}>
                     <div style={inputboxStyle}>
                         <InputGroupComponent placeholder="리뷰작성"></InputGroupComponent>
                     </div>
