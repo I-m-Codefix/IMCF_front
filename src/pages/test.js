@@ -2,7 +2,7 @@ import useStore from "../store/manager";
 import TestLayout from "../layouts/TestLayout";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import Reviewtest from "../components/reviewtest";
+import Reviewtest from "../components/Reviewtest";
 
 
 const review = {
