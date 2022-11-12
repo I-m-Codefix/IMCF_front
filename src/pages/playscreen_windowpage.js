@@ -1,10 +1,15 @@
 import React from "react";
 import ReactPlayer from "react-player";
 import PlayLayout from "../layouts/playLayout";
+import { useParams } from "react-router";
 
 import "../styles/Pages/playscreen.scss";
 
 export default function Playscreen_windowpage() {
+
+    const movieNum = useParams();
+    console.log("영화 번호 : ", movieNum.movieId);
+
     return (
         <PlayLayout>
             <div className="video_wrapper">
