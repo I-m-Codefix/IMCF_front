@@ -36,7 +36,7 @@
     "prestart": "react-scripts build",
     "start": "pm2 serve build 5000 --spa --name imcf-front-server",
     "restart": "pm2 restart imcf-front-server",
-    "reload": "pm2 reload imcf-front-server",
+    "reload": "pm2 delete imcf-front-server && pm2 serve build 5000 --spa --name imcf-front-server",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
