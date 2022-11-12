@@ -11,6 +11,8 @@ import InputGroupComponent from "../components/inputgroupcomponent";
 
 import { Card } from "react-bootstrap";
 
+const isProd = process.env.NODE_ENV === 'production' ? true : false;
+
 const bgStyle = {
     width: "100%",
     height: "100%",
@@ -102,7 +104,7 @@ const kakaoLogin = async () => {
 }
 
 const toMain = () => {
-    window.location.replace("http://localhost:5000/main");
+    window.location.replace(isProd ? "http://imcf.kr/main" : "http://localhost:5000/main");
 }
 
 function Loginpage({ history }) {
