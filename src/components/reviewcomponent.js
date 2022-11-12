@@ -1,7 +1,6 @@
 import ButtonComponent from "../components/buttoncomponent";
 import InputGroupComponent from "../components/inputgroupcomponent";
 import { useQuery } from "react-query";
-import { loadMovieComment } from '../apis/api/movie';
 import { useCookies } from 'react-cookie';
 import Subreviewcomponent from "./Subreviewcomponent";
 import { useEffect } from "react";
@@ -15,34 +14,36 @@ const mainStyle = {
 }
 
 const reviewListStyle = {
+    borderRadius: "8px",
     width: "100%",
     height: "88%",
     padding: "10px",
-    boder: "4px solid red",
     overflow: "auto"
 }
 
 const reviewStyle = {
+    borderRadius: "8px",
     width: "100%",
     minHeight: "128px"
 }
 
 const commentStyle = {
+    borderRadius: "8px",
     display: "flex",
     width: "100%",
-    height: "80px",
+    height: "40px",
     margin: "16px 0",
     padding: "8px",
-    border: "1px solid #030303",
-    background: "#F3F3F3"
+    color: "#F3F3F3",
+    background: "#9A8C98",
+    marginBottom: "20px"
 }
 
 const editCommentStyle = {
     display: "flex",
     width: "100%",
     padding: "16px 0",
-    margin: "32px 0 0 0",
-    border: "1px solid #030303",
+    margin: "32px 0 0 0"
 }
 
 const inputboxStyle = {
@@ -154,31 +155,19 @@ const reviewList = (reviewData) => {
 export default function ReviewComponent(props) {
     const [cookies, getCookies, removeCookie] = useCookies(['userInfo']);
     const token = cookies.userInfo.token;
-    const { isLoading, isError, data } = useQuery("result", () => loadMovieComment(token, props.movieNum), {
-        retry: 0,
-    });
-
-    if (isError) {
-        return (<span>Error: {isError.message}</span>);
-    }
-
-    if (isLoading) {
-        return (<span>Loading...</span>);
-    } else {
-        return (
-            <div style={mainStyle}>
-                <div style={reviewListStyle}>
-                    {reviewList(data)}
+    return (
+        <div style={mainStyle}>
+            <div style={reviewListStyle}>
+                {reviewList(props.movieComment)}
+            </div>
+            <div style={editCommentStyle}>
+                <div style={inputboxStyle}>
+                    <InputGroupComponent placeholder="리뷰작성"></InputGroupComponent>
                 </div>
-                <div style={editCommentStyle}>
-                    <div style={inputboxStyle}>
-                        <InputGroupComponent placeholder="리뷰작성"></InputGroupComponent>
-                    </div>
-                    <div style={buttonboxStyle}>
-                        <ButtonComponent btn_text="작성" />
-                    </div>
+                <div style={buttonboxStyle}>
+                    <ButtonComponent btn_text="작성" />
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
 }

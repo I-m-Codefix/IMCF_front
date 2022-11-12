@@ -5,7 +5,7 @@ import "../styles/Components/buttonComponent.scss";
 const divStyle = {
     width: "100%",
     height: "100%",
-    padding: "0 10px"
+    padding: "0 15px"
 }
 
 const btnStyle = (style) => {

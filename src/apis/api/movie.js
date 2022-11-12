@@ -17,6 +17,20 @@ export const loadMovie = async (token, categoryId) => {
     }
 }
 
+export const loadMovieData = async (token, movieId) => {
+    //console.log("token = ", token);
+    const res = await Axios.get(`/service/ott/stream/${movieId}`, {
+        headers: {
+            Authorization: token
+        }
+    });
+    if (res.data.code === 200) {
+        return res.data.result;
+    } else {
+        return res.data;
+    }
+}
+
 export const loadMovieComment = async (token, movieId) => {
     const res = await Axios.get(`/service/ott/commentStreaming/${movieId}`, {
         headers: {

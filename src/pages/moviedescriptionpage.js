@@ -6,8 +6,8 @@ import PosterComponent from "../components/postercomponent";
 import ButtonComponent from "../components/buttoncomponent";
 import TabContentTitle from "../components/tabcontenttitle";
 import { useParams } from "react-router";
-import { loadMovieComment } from '../apis/api/movie';
-import { useQuery } from "react-query";
+import { loadMovieData, loadMovieComment } from '../apis/api/movie';
+import { useQueries ,useQuery } from "react-query";
 import ReviewComponent from "../components/reviewcomponent";
 
 const mainStyle = {
@@ -80,62 +80,79 @@ const chageBox = {
 }
 
 const navStyle = {
+    marginTop: 20,
     height: "auto"
 }
 
 function TabContent(props) {
     if (props.clickedTab === 0) {
-        return (<TabContentTitle num="0" movieNum={props.movieNum} />);
+        return (<TabContentTitle num="0" movieComment={props.movieComment} />);
     } else if (props.clickedTab === 1) {
         return (<TabContentTitle num="1" />);
     }
 }
 
+
 function Moviedescriptionpage() {
     let [clickedTab, setClickedTab] = useState(0)
-
-    const [cookies, getCookies, removeCookie] = useCookies(['userInfo']);
-    const token = cookies.userInfo.token;
-
     const movieNum = useParams();
     console.log("영화 번호 : ", movieNum);
+    const [cookies, getCookies, removeCookie] = useCookies(['userInfo']);
+    const token = cookies.userInfo.token;
+    const result = useQueries([
+        {
+            queryKey: "moviedata", 
+            queryFn: () => loadMovieData(token, movieNum.movieId)
+        },
+        {
+            queryKey: "movieComment", 
+            queryFn: () => loadMovieComment(token, movieNum.movieId)
+        }
+    ]);
 
-    return (
-        <LayoutComponent>
-            <div style={mainStyle}>
-                <Card style={cardStyle}>
-                    <div style={headStyle}>
-                        <div style={movieBox}>
-                            <div style={rowStyle}>
-                                {/*<PosterComponent name={} thumbnail={} />*/}
+    const loadingFinishAll = result.some(result => result.isLoading);
+
+    if (loadingFinishAll) {
+        return (<span>Loading...</span>);
+    } else {
+        console.log("moviedata", result[0]);
+        console.log("movieComment", result[1]);
+        return (
+            <LayoutComponent>
+                <div style={mainStyle}>
+                    <Card style={cardStyle}>
+                        <div style={headStyle}>
+                            <div style={movieBox}>
+                                <div style={rowStyle}>
+                                    <PosterComponent name={result[0].data.ottName} thumbnail={result[0].data.ottThumbnail} post_link={`/infomovie/${result[0].data.id}`} />
+                                </div>
+                            </div>
+                            <div style={infoStyle}>
+                                <label style={labelStyle}>감독 이름</label>
+                                <label style={labelStyle}>출연진</label>
+                                <label style={labelStyle}>영화 설명</label>
                             </div>
                         </div>
-                        <div style={infoStyle}>
-                            <label style={labelStyle}>감독 이름</label>
-                            <label style={labelStyle}>출연진</label>
-                            <label style={labelStyle}>영화 설명</label>
+                        <div style={chageBox}>
+                            <Nav style={navStyle} variant="tabs" defaultActiveKey="0" >
+                                <Nav.Item variant="a">
+                                    <Nav.Link eventKey="0" onClick={() => { setClickedTab(0) }}>리뷰 작성</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item variant="a">
+                                    <Nav.Link eventKey="1" onClick={() => { setClickedTab(1) }}>관련 영화</Nav.Link>
+                                </Nav.Item>
+                            </Nav>
+                            <TabContent clickedTab={clickedTab} movieComment={result[1].data} />
                         </div>
-                    </div>
-                    <div style={chageBox}>
-                        <Nav style={navStyle} variant="tabs" defaultActiveKey="0" >
-                            <Nav.Item variant="a">
-                                <Nav.Link eventKey="0" onClick={() => { setClickedTab(0) }}>리뷰 작성</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item variant="a">
-                                <Nav.Link eventKey="1" onClick={() => { setClickedTab(1) }}>관련 영화</Nav.Link>
-                            </Nav.Item>
-                        </Nav>
-                        <TabContent clickedTab={clickedTab} movieNum={movieNum.movieId} />
-                    </div>
-
-                    <div style={buttonwrapper}>
-                        <ButtonComponent btn_text="뒤로가기" btn_link="/main" />
-                        <ButtonComponent btn_text="재생" btn_link={`/play/${movieNum.movieId}`} />
-                    </div>
-                </Card>
-            </div>
-        </LayoutComponent >
-    );
+                        <div style={buttonwrapper}>
+                            <ButtonComponent btn_text="뒤로가기" btn_link="/main" />
+                            <ButtonComponent btn_text="재생" btn_link={`/play/${movieNum.movieId}`} />
+                        </div>
+                    </Card>
+                </div>
+            </LayoutComponent >
+        );
+    }
 }
 
 export default Moviedescriptionpage;

@@ -35,7 +35,7 @@ export default function PosterComponent(post) {
     return (
         <div style={posterStyle} onClick={() => go(post.post_link)}>
             <div style={imgStyle}>
-                <img style={imgSrc} src={post.thumbnail} alt="lalaland" border="0" />
+                <img style={imgSrc} src={post.thumbnail} alt="이미지 로딩.." border="0" />
             </div>
             <div style={movieTitle}>{post.name}</div>
         </div>
