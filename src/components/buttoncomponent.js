@@ -5,7 +5,7 @@ import "../styles/Components/buttonComponent.scss";
 const divStyle = {
     width: "100%",
     height: "100%",
-    padding: "0 10px"
+    padding: "0 15px"
 }
 
 const btnStyle = (style) => {
@@ -36,7 +36,7 @@ ButtonComponent.propsTypes = {
 
 ButtonComponent.defaultProps = {
     btn_text: '대체 텍스트',
-    //btn_link: ''
+    btn_link: ''
 }
 
 export default ButtonComponent;

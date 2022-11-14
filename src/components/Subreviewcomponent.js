@@ -1,13 +1,14 @@
 import React from 'react'
 
 const commentStyle = {
+    borderRadius: "8px",
     display: "flex",
     width: "100%",
-    height: "80px",
+    height: "40px",
     margin: "16px 0",
     padding: "8px",
-    border: "1px solid #030303",
-    background: "#F3F3F3"
+    background: "#9A8C98",
+    color: "#F3F3F3"
 }
 
 const reviewStyle = (count) => {
