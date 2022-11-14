@@ -4,7 +4,7 @@ import InputGroupComponent from "../components/inputgroupcomponent";
 import bg from "../assets/image/bg1.jpg";
 import useStore from "../store/manager";
 import { useEffect } from "react";
-import singup from "../apis/api/user";
+import signup from "../apis/api/user";
 
 const bgStyle = {
     width: "100%",
@@ -77,7 +77,7 @@ function Signuppage() {
     };
 
     const requestSignup = async (userData) => {
-        await singup(userData);
+        // await signup(userData);
     };
 
     useEffect(() => {
@@ -113,7 +113,7 @@ function Signuppage() {
                         </div>
                         <div style={buttonwrapper}>
                             <ButtonComponent btn_text="뒤로가기" btn_link="/" />
-                            <ButtonComponent btn_text="확인" btn_link="/" keyword="policy" onClick={()=>{requestSignup(userData)}} />
+                            <ButtonComponent btn_text="확인" btn_link="/" keyword="policy" onClick={()=>{requestSignup(/*userData*/)}} />
                         </div>
                     </Card>
                 </div>

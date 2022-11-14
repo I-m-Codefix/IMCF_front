@@ -1,7 +1,7 @@
 // 유저 api 요청 및 응답
 import { Axios } from '../utils/index';
 
-export const singup = async (userData) => {
+export const signup = async (userData) => {
     const res = await Axios.post('', {
         name: userData.name,
         password: userData.password,

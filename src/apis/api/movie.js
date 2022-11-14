@@ -1,6 +1,5 @@
 // 영화 api 요청 및 응답
 import { Axios } from '../utils/index';
-import { useCookies } from 'react-cookie';
 
 // 영화 정보 가져오기
 export const loadMovie = async (token, categoryId) => {
