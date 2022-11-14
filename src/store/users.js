@@ -1,8 +1,16 @@
-import { useQuery } from 'react-query';
-import { loadUser } from '../apis/api/user';
+import create from "zustand"
 
-const Users = () => {
-    const query = useQuery('users', loadUser);
-    console.log('query : ', query);
-    return 0;
-}
+const useStore = create((set) => ({
+    name: '',
+    email: '',
+    platforType: '',
+    platformImage: '',
+    setData: (userData) => set((state) => {
+        state.name = userData.name;
+        state.email = userData.email;
+        state.platforType = userData.platforType;
+        state.platformImage = userData.platformImage;
+    }),
+}));
+
+export default useStore;

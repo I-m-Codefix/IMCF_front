@@ -1,6 +1,16 @@
 // 유저 api 요청 및 응답
 import { Axios } from '../utils/index';
 
+export const singup = async (userData) => {
+    const res = await Axios.post('', {
+        name: userData.name,
+        password: userData.password,
+        email: userData.email,
+        platformType: "IMCF",
+        platformImage: ""
+    });
+}
+
 // 유저 정보 가져오기
 export const loadUser = async () => {
     const { data } = await Axios.get('/user');
