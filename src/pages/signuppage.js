@@ -2,6 +2,9 @@ import { Breadcrumb, Card, Form } from "react-bootstrap";
 import ButtonComponent from "../components/buttoncomponent";
 import InputGroupComponent from "../components/inputgroupcomponent";
 import bg from "../assets/image/bg1.jpg";
+import useStore from "../store/manager";
+import { useEffect } from "react";
+import singup from "../apis/api/user";
 
 const bgStyle = {
     width: "100%",
@@ -64,6 +67,25 @@ const checkStyle = {
 }
 
 function Signuppage() {
+    const { policy, changePolicy } = useStore();
+
+    let isPolicy = policy;
+
+    const handlePolicy = () => {
+        isPolicy = !isPolicy;
+        changePolicy(isPolicy);
+    };
+
+    const requestSignup = async (userData) => {
+        await singup(userData);
+    };
+
+    useEffect(() => {
+        return () => {
+            changePolicy(false);
+        }
+    }, []);
+
     return (
         <div style={bgStyle}>
             <div style={overlayStyle}>
@@ -78,20 +100,20 @@ function Signuppage() {
                             <InputGroupComponent />
                             <label style={labelStyle}>이름</label>
                             <InputGroupComponent />
-                            <label style={labelStyle}>생년월일</label>
+                            {/*<label style={labelStyle}>생년월일</label>
                             <InputGroupComponent />
                             <label style={labelStyle}>전화번호 인증</label>
-                            <InputGroupComponent />
+                            <InputGroupComponent />*/}
                             <label style={labelStyle}>약관동의</label>
                             <InputGroupComponent />
                             <div style={checkStyle}>
                                 <Form.Check.Label style={labelStyle}>약관에 동의합니다.</Form.Check.Label>
-                                <Form.Check />
+                                <Form.Check type="checkbox" onChange={ () => { handlePolicy() } } />
                             </div>
                         </div>
                         <div style={buttonwrapper}>
-                            <ButtonComponent btn_text="뒤로가기" btn_link="/"/>
-                            <ButtonComponent btn_text="확인" btn_link="/"/>
+                            <ButtonComponent btn_text="뒤로가기" btn_link="/" />
+                            <ButtonComponent btn_text="확인" btn_link="/" keyword="policy" onClick={()=>{requestSignup(userData)}} />
                         </div>
                     </Card>
                 </div>
