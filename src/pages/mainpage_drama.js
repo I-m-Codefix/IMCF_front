@@ -52,21 +52,33 @@ const categoryList = (movieData) => {
     );
 }
 
-export default function Mainpage() {
+export default function Dramapage() {
     const [cookies, getCookies, removeCookie] = useCookies(['userInfo']);
     const token = cookies.userInfo.token;
     const result = useQueries([
         {
-            queryKey: "documentary", 
+            queryKey: "thriller",
+            queryFn: () => loadMovie(token, 3)
+        },
+        {
+            queryKey: "comic",
+            queryFn: () => loadMovie(token, 4)
+        },
+        {
+            queryKey: "romance",
+            queryFn: () => loadMovie(token, 5)
+        },
+        {
+            queryKey: "documentary",
             queryFn: () => loadMovie(token, 6)
         },
         {
-            queryKey: "comic", 
-            queryFn: () => loadMovie(token, 17)
+            queryKey: "family",
+            queryFn: () => loadMovie(token, 10)
         },
         {
-            queryKey: "independent", 
-            queryFn: () => loadMovie(token, 13)
+            queryKey: "sf",
+            queryFn: () => loadMovie(token, 21)
         }
     ]);
 
@@ -82,12 +94,18 @@ export default function Mainpage() {
             <TabLayoutComponent>
                 <div style={mainStyle}>
                     <Container style={movieBox}>
-                        <div style={categoryTitleStyle}>드라마 - 다큐</div>
+                        <div style={categoryTitleStyle}>스릴러</div>
                             {categoryList(result[0].data)}
-                        <div style={categoryTitleStyle}>영화 - 독립</div>
+                        <div style={categoryTitleStyle}>코믹</div>
                             {categoryList(result[1].data)}
-                        <div style={categoryTitleStyle}>애니메이션 - 코미디</div>
+                        <div style={categoryTitleStyle}>로맨스</div>
                             {categoryList(result[2].data)}
+                        <div style={categoryTitleStyle}>다큐</div>
+                            {categoryList(result[3].data)}
+                        <div style={categoryTitleStyle}>가족</div>
+                            {categoryList(result[4].data)}
+                        <div style={categoryTitleStyle}>SF</div>
+                            {categoryList(result[5].data)}
                     </Container>
                 </div>
             </TabLayoutComponent>

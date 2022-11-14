@@ -14,6 +14,10 @@ import Movieapplicationpage from "./pages/movieapplicationpage";
 import Liveapplicationpage from "./pages/liveapplicationpage";
 import Playscreen_windowpage from "./pages/playscreen_windowpage";
 import Memberwithdrawalpage from "./pages/memberwithdrawalpage";
+import Dramapage from "./pages/mainpage_drama";
+import Moviepage from "./pages/mainpage_movie";
+import Animepage from "./pages/mainpage_anime";
+import Otherpage from "./pages/mainpage_other";
 import Test from "./pages/test";
 import Test2 from "./pages/test2";
 
@@ -24,6 +28,10 @@ function Router() {
                 <Route path="/" element={<Loginpage />} />
                 <Route path="signup" element={<Signuppage />} />
                 <Route path="main" element={<Mainpage />} />
+                <Route path="drama" element={<Dramapage />} />
+                <Route path="movie" element={<Moviepage />} />
+                <Route path="anime" element={<Animepage />} />
+                <Route path="other" element={<Otherpage />} />
                 <Route path="user" element={<Usermypage />} />
                 <Route path="delete" element={<Memberwithdrawalpage />} />
                 <Route path="modify" element={<Modifyinformationpage />} />

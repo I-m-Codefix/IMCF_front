@@ -52,21 +52,17 @@ const categoryList = (movieData) => {
     );
 }
 
-export default function Mainpage() {
+export default function Otherpage() {
     const [cookies, getCookies, removeCookie] = useCookies(['userInfo']);
     const token = cookies.userInfo.token;
     const result = useQueries([
         {
-            queryKey: "documentary", 
-            queryFn: () => loadMovie(token, 6)
-        },
-        {
-            queryKey: "comic", 
+            queryKey: "independent", 
             queryFn: () => loadMovie(token, 17)
         },
         {
-            queryKey: "independent", 
-            queryFn: () => loadMovie(token, 13)
+            queryKey: "foreign", 
+            queryFn: () => loadMovie(token, 33)
         }
     ]);
 
@@ -82,12 +78,10 @@ export default function Mainpage() {
             <TabLayoutComponent>
                 <div style={mainStyle}>
                     <Container style={movieBox}>
-                        <div style={categoryTitleStyle}>드라마 - 다큐</div>
+                        <div style={categoryTitleStyle}>독립 영화</div>
                             {categoryList(result[0].data)}
-                        <div style={categoryTitleStyle}>영화 - 독립</div>
+                        <div style={categoryTitleStyle}>해외 영화</div>
                             {categoryList(result[1].data)}
-                        <div style={categoryTitleStyle}>애니메이션 - 코미디</div>
-                            {categoryList(result[2].data)}
                     </Container>
                 </div>
             </TabLayoutComponent>

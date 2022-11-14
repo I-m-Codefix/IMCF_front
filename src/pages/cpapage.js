@@ -62,9 +62,9 @@ function Cpapage() {
                 <InputGroupComponent />
                 <label style={labelStyle}>개인정보 수집동의</label>
                 <div style={checkStyle}>
-                                <Form.Check.Label style={labelStyle}>약관에 동의합니다.</Form.Check.Label>
-                                <Form.Check />
-                            </div>
+                    <Form.Check.Label style={labelStyle}>약관에 동의합니다.</Form.Check.Label>
+                    <Form.Check />
+                </div>
                 <InputGroupComponent />
             </div>
             <div style={buttonwrapper}>
