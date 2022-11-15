@@ -61,7 +61,6 @@ const headStyle = {
 }
 
 const infoStyle = {
-    alignItems: "center",
     justifyContent: "center",
     display: "flex",
     width: "350px",
@@ -88,7 +87,7 @@ function TabContent(props) {
     if (props.clickedTab === 0) {
         return (<TabContentTitle num="0" movieComment={props.movieComment} />);
     } else if (props.clickedTab === 1) {
-        return (<TabContentTitle num="1" />);
+        return (<TabContentTitle num="1"/>);
     }
 }
 
@@ -124,13 +123,13 @@ function Moviedescriptionpage() {
                         <div style={headStyle}>
                             <div style={movieBox}>
                                 <div style={rowStyle}>
-                                    <PosterComponent name={result[0].data.ottName} thumbnail={result[0].data.ottThumbnail} post_link={`/infomovie/${result[0].data.id}`} />
+                                    <PosterComponent thumbnail={result[0].data.ottThumbnail} post_link={`/infomovie/${result[0].data.id}`} />
                                 </div>
                             </div>
                             <div style={infoStyle}>
-                                <label style={labelStyle}>감독 이름</label>
-                                <label style={labelStyle}>출연진</label>
-                                <label style={labelStyle}>영화 설명</label>
+                                <label style={labelStyle}>제목 : {result[0].data.ottName}  ({result[0].data.playTime})</label>
+                                <label style={labelStyle}>감독 : {result[0].data.ottDesc}</label>
+                                <label style={labelStyle}>영화설명 : {result[0].data.ottDescDetail}</label>
                             </div>
                         </div>
                         <div style={chageBox}>
@@ -142,7 +141,7 @@ function Moviedescriptionpage() {
                                     <Nav.Link eventKey="1" onClick={() => { setClickedTab(1) }}>관련 영화</Nav.Link>
                                 </Nav.Item>
                             </Nav>
-                            <TabContent clickedTab={clickedTab} movieComment={result[1].data} />
+                            <TabContent clickedTab={clickedTab} movieComment={result[1].data}/>
                         </div>
                         <div style={buttonwrapper}>
                             <ButtonComponent btn_text="뒤로가기" btn_link="/main" />

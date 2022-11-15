@@ -2,6 +2,7 @@ import { Row, Col } from "react-bootstrap";
 import PosterComponent from "./postercomponent";
 import "../styles/Components/inputComponent.scss"
 import ReviewComponent from "./reviewcomponent";
+import { loadMovieData } from '../apis/api/movie';
 
 const mainStyle = {
     width: "100%",
