@@ -14,7 +14,6 @@ const mainStyle = {
 }
 
 const reviewListStyle = {
-    border: "2px solid green",
     borderRadius: "8px",
     width: "100%",
     height: "100%",
@@ -22,14 +21,11 @@ const reviewListStyle = {
 }
 
 const reviewStyle = {
-    border: "2px solid red",
     borderRadius: "8px",
-    // width: "100%",
     minHeight: "128px"
 }
 
 const commentStyle = {
-    border: "2px solid black",
     whitespace: "pre-wrap",
     borderRadius: "8px",
     display: "flex",
