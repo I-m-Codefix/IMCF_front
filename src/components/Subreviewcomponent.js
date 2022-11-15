@@ -1,7 +1,6 @@
 import React from 'react'
 
 const commentStyle = {
-    border: "2px solid black",
     whitespace: "pre-wrap",
     borderRadius: "8px",
     display: "flex",
