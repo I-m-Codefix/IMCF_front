@@ -112,7 +112,7 @@ const reviewList = (reviewData) => {
                     </div>
                     {/* 코멘트 */}
                     <div style={commentStyle}>
-                        {comment.content+"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
+                        {comment.content}
                     </div>
                 </div>
             );
