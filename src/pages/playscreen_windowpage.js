@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactPlayer from "react-player";
 import PlayLayout from "../layouts/playLayout";
 import { useParams } from "react-router";
@@ -12,11 +12,9 @@ export default function Playscreen_windowpage() {
     const [cookies] = useCookies(['userInfo']);
     const token = cookies.userInfo.token;
     const movieNum = useParams();
-    console.log("영화 번호 : ", movieNum.movieId);
-    const { data, isLoading, error } = useQuery("moive", () => {
-        loadMovieData(token);
-        console.log(data);
-    });
+    let playURL = "";
+
+    const { data, isLoading, error } = useQuery("moive", () => loadMovieData(token, movieNum.movieId));
 
     if (isLoading) {
         return (
@@ -24,20 +22,19 @@ export default function Playscreen_windowpage() {
                 <h1>Loading...</h1>
             </div>
         );
-    } else {
-        const playURL = data.result.playUri;
-        return (
-            <PlayLayout>
-                <div className="video_wrapper">
-                    <ReactPlayer
-                        className="react-player"
-                        url={playURL}
-                        width="100%"
-                        height="100%"
-                        controls={true}
-                    />
-                </div>
-            </PlayLayout>
-        );
     }
+    
+    return (
+        <PlayLayout>
+            <div className="video_wrapper">
+                <ReactPlayer
+                    className="react-player"
+                    url={data != undefined ? data.playUri : ""}
+                    width="100%"
+                    height="100%"
+                    controls={true}
+                />
+            </div>
+        </PlayLayout>
+    );
 }
