@@ -33,11 +33,11 @@
   "scripts": {
     "lint": "eslint **/*",
     "dev": "set PORT=5000 && react-scripts start",
-    "prestart": "react-scripts build && npm rebuild node-sass",
+    "prestart": "react-scripts build",
     "start": "pm2 serve build 5000 --spa --name imcf-front-server",
     "restart": "pm2 restart imcf-front-server",
-    "reload": "pm2 delete imcf-front-server && pm2 serve build 5000 --spa --name imcf-front-server",
-    "build": "react-scripts build",
+    "reload": "react-scripts build && pm2 reload imcf-front-server",
+    "build": "react-scripts build && npm rebuild node-sass",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
