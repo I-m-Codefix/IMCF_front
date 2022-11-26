@@ -139,7 +139,7 @@ function Loginpage() {
                                     <InputGroupComponent placeholder="PWD"></InputGroupComponent>
                                 </div>
                                 <div style={buttonboxStyle}>
-                                    <ButtonComponent btn_text="로그인" btn_link="/main" /><br />
+                                    <ButtonComponent btn_text="로그인이라고?" btn_link="/main" /><br />
                                 </div>
                             </div>
                             <div style={colStyle}>
