@@ -6,7 +6,6 @@ import { Button } from "react-bootstrap";
 import bg from "../assets/image/bg1.jpg";
 import logo from "../assets/logo/logo_transparent.png";
 import kakao from "../assets/image/kakao_login_medium_wide.png";
-
 import ButtonComponent from "../components/buttoncomponent";
 import { Card } from "react-bootstrap";
 import useStore from "../store/users"
