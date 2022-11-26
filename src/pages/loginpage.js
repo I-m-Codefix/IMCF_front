@@ -99,7 +99,10 @@ const toMain = () => {
 }
 
 function Loginpage() {
-    const { email, password, setEmail, setPassword } = useStore();
+    const email = useStore((state) => state.email);
+    const password = useStore((state) => state.password);
+    const setEmail = useStore((state) => state.setEmail);
+    const setPassword = useStore((state) => state.setPassword);
     const [cookies, setCookie, removeCookie] = useCookies(['userInfo']);
     let params = new URLSearchParams(window.location.search);
 
