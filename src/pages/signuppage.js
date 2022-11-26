@@ -1,10 +1,9 @@
-import { Breadcrumb, Card, Form } from "react-bootstrap";
+import { Card, Form } from "react-bootstrap";
 import ButtonComponent from "../components/buttoncomponent";
 import InputGroupComponent from "../components/inputgroupcomponent";
 import bg from "../assets/image/bg1.jpg";
 import useStore from "../store/manager";
 import { useEffect } from "react";
-import signup from "../apis/api/user";
 
 const bgStyle = {
     width: "100%",
@@ -67,17 +66,25 @@ const checkStyle = {
 }
 
 function Signuppage() {
-    const { policy, changePolicy } = useStore();
+    const { signupData, policy, setName, setEmail, setPassword, changePolicy } = useStore();
 
     let isPolicy = policy;
+
+    const changeName = (e) => {
+        setName(e.target.value);
+    }
+
+    const changeEmail = (e) => {
+        setEmail(e.target.value);
+    }
+
+    const changePassword = (e) => {
+        setPassword(e.target.value);
+    }
 
     const handlePolicy = () => {
         isPolicy = !isPolicy;
         changePolicy(isPolicy);
-    };
-
-    const requestSignup = async (userData) => {
-        // await signup(userData);
     };
 
     useEffect(() => {
@@ -92,20 +99,20 @@ function Signuppage() {
                 <div style={wrapperStyle}>
                     <Card style={cardStyle}>
                         <div style={inputwrapper}>
-                            <label style={labelStyle}>아이디</label>
-                            <InputGroupComponent />
+                            <label style={labelStyle}>이메일</label>
+                                <input name="email" onChange={ changeEmail } />
                             <label style={labelStyle}>비밀번호</label>
-                            <InputGroupComponent />
+                                <input name="password" onChange={ changePassword }/>
                             <label style={labelStyle}>비밀번호 확인</label>
-                            <InputGroupComponent />
+                                <input name="passwordCheck" />
                             <label style={labelStyle}>이름</label>
-                            <InputGroupComponent />
+                                <input name="name" onChange={ changeName }/>
                             {/*<label style={labelStyle}>생년월일</label>
                             <InputGroupComponent />
                             <label style={labelStyle}>전화번호 인증</label>
                             <InputGroupComponent />*/}
                             <label style={labelStyle}>약관동의</label>
-                            <InputGroupComponent />
+                                <InputGroupComponent />
                             <div style={checkStyle}>
                                 <Form.Check.Label style={labelStyle}>약관에 동의합니다.</Form.Check.Label>
                                 <Form.Check type="checkbox" onChange={ () => { handlePolicy() } } />
@@ -113,7 +120,7 @@ function Signuppage() {
                         </div>
                         <div style={buttonwrapper}>
                             <ButtonComponent btn_text="뒤로가기" btn_link="/" />
-                            <ButtonComponent btn_text="확인" btn_link="/" keyword="policy" onClick={()=>{requestSignup(/*userData*/)}} />
+                            <ButtonComponent btn_text="확인" btn_link={`/signup/auth?email=${signupData.email}&password=${signupData.password}&name=${signupData.name}`} keyword="policy" />
                         </div>
                     </Card>
                 </div>

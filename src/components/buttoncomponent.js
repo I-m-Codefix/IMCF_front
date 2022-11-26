@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from 'prop-types';
 import { Button } from "react-bootstrap";
 import useStore from '../store/manager';
@@ -26,16 +26,16 @@ const ButtonComponent = ({ btn_text, btn_link, onClick, style, keyword }) => {
 
     const policy = useStore(state => state.policy);
 
-    if (keyword === 'policy') {
+    if (keyword === "policy") {
         return (
             <div style={divStyle}>
-                <Button style={btnStyle(style)} href={btn_link} onClick={onClick} disabled={!policy}> {btn_text} </Button>
+                <Button style={btnStyle(style)} onClick={onClick} disabled={!policy} href={btn_link}> {btn_text} </Button>
             </div>
         );
     } else {
         return (
             <div style={divStyle}>
-                <Button style={btnStyle(style)} href={btn_link} onClick={onClick}> {btn_text} </Button>
+                <Button style={btnStyle(style)} onClick={onClick} href={btn_link}> {btn_text} </Button>
             </div>
         );
     }

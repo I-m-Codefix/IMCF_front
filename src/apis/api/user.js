@@ -2,7 +2,7 @@
 import { Axios } from '../utils/index';
 
 export const signup = async (userData) => {
-    const res = await Axios.post('', {
+    const res = await Axios.post('/account/signup', {
         name: userData.name,
         password: userData.password,
         email: userData.email,

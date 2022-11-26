@@ -1,7 +1,25 @@
+import React, { useEffect } from "react";
 import { Card } from "react-bootstrap";
-import LayoutComponent from "../layouts/layoutComponent";
 import ButtonComponent from "../components/buttoncomponent";
 import InputGroupComponent from "../components/inputgroupcomponent";
+import { useLocation } from "react-router";
+import useStore from "../store/manager";
+import bg from "../assets/image/bg1.jpg";
+import { useQuery } from "react-query";
+import { signup } from "../apis/api/user";
+
+const bgStyle = {
+    width: "100%",
+    height: "100%",
+    backgroundImage: `url(${bg})`,
+    backgroundSize: "cover",
+};
+
+const overlayStyle = {
+    width: "100%",
+    height: "100%",
+    background: "rgba(0, 0, 0, 0.8)",
+}
 
 const mainStyle = {
     display: "flex",
@@ -38,12 +56,6 @@ const buttonwrapper = {
     padding: "50px"
 }
 
-const labelStyle = {
-    width: "200px",
-    color: "white",
-    padding: "0 0px 0 0"
-}
-
 const titleStyle = {
     display: "flex",
     justifyContent: "center",
@@ -52,30 +64,81 @@ const titleStyle = {
     padding: "0 0px 0 0"
 }
 
-
+const isEmpty = (params) => {
+    return Object.keys(params).length === 0;
+}
 
 function Emailpage() {
-    return (
-        <LayoutComponent>
-            <div style={mainStyle}>
-                <Card style={cardStyle}>
-                    <div style={changeBox}>
-                        <h1>
-                        <label style={titleStyle}>이메일 인증</label>
-                        </h1>
+    const location = useLocation();
+    const userData = new URLSearchParams(location.search);
+    const key = userData.get('secretKey') != null ? userData.get('secretKey') : null;
+    const email = userData.get('email') != null ? userData.get('email') : null;
+    const password = userData.get('password') != null ? userData.get('password') : null;
+    const name = userData.get('name') != null ? userData.get('name') : null;
+
+    const { data, isLoading, error } = useQuery("signupData", () => {
+        if (email != null && password != null && name != null) {
+            signup({
+                email: email,
+                password: password,
+                name: name,
+                platformType: "IMCF",
+                platformImage: ""
+            });
+        } else {
+            return null;
+        }
+    });
+
+    if (isLoading) {
+        return (
+            <div>
+                <h1>Loading...</h1>
+            </div>
+        )
+    } else {
+        if (key != null) {
+            console.log("key : ", isEmpty(key));
+        } else {
+            return (
+                <div style={bgStyle}>
+                    <div style={overlayStyle}>
+                        <div style={mainStyle}>
+                            <Card style={cardStyle}>
+                                <div style={changeBox}>
+                                    <h1 style={titleStyle}>
+                                        메일이 발송되었습니다.<br />메일을 확인하고 링크를 클릭해주세요.
+                                    </h1>
+                                </div>
+                                <div style={buttonwrapper}>
+                                    <ButtonComponent btn_text="돌아가기" btn_link="/" />
+                                </div>
+                            </Card>
+                        </div>
                     </div>
-                    <div style={changeBox}>
-                        <label style={labelStyle}>이메일 입력</label>
-                        <InputGroupComponent />
-                        <ButtonComponent btn_text="인증메일 전송" btn_link="/email"/>
+                </div>
+            )
+        }
+    
+        return (
+            <div style={bgStyle}>
+                <div style={overlayStyle}>
+                    <div style={mainStyle}>
+                        <Card style={cardStyle}>
+                            <div style={changeBox}>
+                                <h1 style={titleStyle}>
+                                    인증되었습니다.<br />
+                                    로그인페이지로 이동하여 로그인 해주세요.
+                                </h1>
+                            </div>
+                            <div style={buttonwrapper}>
+                                <ButtonComponent btn_text="로그인하기" btn_link="/" />
+                            </div>
+                        </Card>
                     </div>
-                    <div style={buttonwrapper}>
-                        <ButtonComponent btn_text="뒤로가기" btn_link="/modify"/>
-                        <ButtonComponent btn_text="확인" btn_link="/modify"/>
-                    </div>
-                </Card>
-            </div >
-        </LayoutComponent >
-    );
+                </div>
+            </div>
+        );
+    }
 }
 export default Emailpage;

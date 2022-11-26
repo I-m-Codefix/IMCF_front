@@ -27,6 +27,7 @@ function Router() {
             <Routes>
                 <Route path="/" element={<Loginpage />} />
                 <Route path="signup" element={<Signuppage />} />
+                <Route path="signup/auth" element={<Emailpage />} />
                 <Route path="main" element={<Mainpage />} />
                 <Route path="drama" element={<Dramapage />} />
                 <Route path="movie" element={<Moviepage />} />
@@ -36,7 +37,6 @@ function Router() {
                 <Route path="delete" element={<Memberwithdrawalpage />} />
                 <Route path="modify" element={<Modifyinformationpage />} />
                 <Route path="pwdchange" element={<Pwdchangepage />} />
-                <Route path="email" element={<Emailpage />} />
                 <Route path="contentprovide" element={<Cpapage />} />
                 <Route path="infomovie" element={<Moviedescriptionpage />}>
                     <Route path=":movieId" element={<Moviedescriptionpage />} />

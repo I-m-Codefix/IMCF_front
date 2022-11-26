@@ -8,7 +8,6 @@ import kakao from "../assets/image/kakao_login_medium_wide.png";
 
 import ButtonComponent from "../components/buttoncomponent";
 import InputGroupComponent from "../components/inputgroupcomponent";
-
 import { Card } from "react-bootstrap";
 
 const isProd = process.env.NODE_ENV === 'production' ? true : false;
@@ -107,7 +106,7 @@ const toMain = () => {
     window.location.replace(isProd ? "http://imcf.kr/main" : "http://localhost:5000/main");
 }
 
-function Loginpage({ history }) {
+function Loginpage() {
     const [cookies, setCookie, removeCookie] = useCookies(['userInfo']);
     let params = new URLSearchParams(window.location.search);
     if (params.get('token') !== null) {
