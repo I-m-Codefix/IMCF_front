@@ -25,8 +25,16 @@ export const review = async (data) => {
 
 // 로그인
 export const login = async (data) => {
-    const res = await Axios.post('/login/oauth2/service', data);
-    return res;
+    try {
+        const res = await Axios.post('/login/oauth2/service', data);
+        return res;
+    } catch (err) {
+        const errorResponse = {
+            code: 500,
+            message: "잘못된 로그인 요청입니다."
+        }
+        return errorResponse;
+    }
 }
 
 // 로그아웃
