@@ -94,7 +94,6 @@ function TabContent(props) {
 function Moviedescriptionpage() {
     let [clickedTab, setClickedTab] = useState(0)
     const movieNum = useParams();
-    console.log("영화 번호 : ", movieNum);
     const [cookies, getCookies, removeCookie] = useCookies(['userInfo']);
     const token = cookies.userInfo.token;
     const result = useQueries([

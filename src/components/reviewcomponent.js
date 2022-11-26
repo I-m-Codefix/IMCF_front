@@ -6,6 +6,7 @@ import Subreviewcomponent from "./Subreviewcomponent";
 import React, { useEffect, useState } from "react";
 import { review } from '../apis/api/user';
 import { Card, Form, Button } from "react-bootstrap";
+import { useParams } from "react-router";
 
 const mainStyle = {
     display: "flex",
@@ -174,28 +175,38 @@ const reviewList = (reviewData) => {
 }
 
 export default function ReviewComponent(props) {
+    const movieNum = useParams();
     const [cookies, setCookie, getCookies, removeCookie] = useCookies(['userInfo']);
     const token = cookies.userInfo.token;
-    const [ content, setContent] = useState(props);
-    const [ parent, setParent] = useState(props);
-    const [ writer, setWriter] = useState(props);
-    const [ streaming, setStreaming] = useState(props);
-    const changeId = (e) => {
+    const [ content, setContent] = useState("");
+    const [ parent, setParent] = useState("");
+    const [ writer, setWriter] = useState("");
+    const [ streaming, setStreaming] = useState("");
+    console.log("토큰 : ",props);
+    const changecontent = (e) => {
         e.preventDefault();
-        content(e.target.value);
+        setContent(e.target.value);
     }
-    const refreshFunction=( newContent )=>{
-        setContent(props.movieComment.concat(newContent) )
+    const changestreaming = (e) => {
+        e.preventDefault();
+        setStreaming(movieNum.movieId)
     }
+    //
+    // const refreshFunction = ( newContent )=>{
+    //     setContent(props.movieComment.concat(newContent))
+    // }
+    //
     const creatReview = async () => {
-        const response = await review({
+        const response = await review(
+        token,
+        {
             content : content,
             parent : parent,
             writer : writer,
             streaming : streaming,
         });
         if (response.code === 500) {
-            alert("존재하지 않거나, 잘못된 정보를 입력하였습니다.");
+            alert("쯧쯧");
             return;
         }
         setCookie('userInfo', {
@@ -215,7 +226,7 @@ export default function ReviewComponent(props) {
             </div>
             <div style={editCommentStyle}>
                 <div style={inputboxgroupStyle}>
-                    <input style={inputboxStyle} placeholder="리뷰작성" onChange={ (e) => changeId(e) }/>
+                    <input style={inputboxStyle} placeholder="리뷰작성" onChange={ (e) => changecontent(e) }/>
                 </div>
                 <div style={buttonboxStyle}>
                     <Button style={btnStyle} onClick={creatReview} >작성</Button>

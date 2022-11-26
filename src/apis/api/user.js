@@ -18,8 +18,12 @@ export const loadUser = async () => {
 }
 
 // 댓글작성
-export const review = async (data) => {
-    const res = await Axios.post('/service/ott/comment', data);
+export const review = async (token, data) => {
+    const res = await Axios.post('/service/ott/comment', data,{
+        headers: {
+            Authorization: token
+        }
+    });
     return res;
 }
 
