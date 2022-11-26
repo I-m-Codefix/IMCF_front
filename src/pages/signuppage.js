@@ -66,19 +66,27 @@ const checkStyle = {
 }
 
 function Signuppage() {
-    const { signupData, policy, setName, setEmail, setPassword, changePolicy } = useStore();
+    const signupData = useStore((state) => state.signupData);
+    const policy = useStore((state) => state.policy);
+    const setName = useStore((state) => state.setName);
+    const setEmail = useStore((state) => state.setEmail);
+    const setPassword = useStore((state) => state.setPassword);
+    const changePolicy = useStore((state) => state.changePolicy);
 
     let isPolicy = policy;
 
     const changeName = (e) => {
+        e.preventDefault();
         setName(e.target.value);
     }
 
     const changeEmail = (e) => {
+        e.preventDefault();
         setEmail(e.target.value);
     }
 
     const changePassword = (e) => {
+        e.preventDefault();
         setPassword(e.target.value);
     }
 

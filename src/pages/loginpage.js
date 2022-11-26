@@ -1,12 +1,15 @@
 import React from 'react';
 import { Axios } from "../apis/utils/index";
 import { useCookies } from 'react-cookie';
+import { Button } from "react-bootstrap";
+
 import bg from "../assets/image/bg1.jpg";
 import logo from "../assets/logo/logo_transparent.png";
 import kakao from "../assets/image/kakao_login_medium_wide.png";
 import ButtonComponent from "../components/buttoncomponent";
-import InputGroupComponent from "../components/inputgroupcomponent";
 import { Card } from "react-bootstrap";
+import useStore from "../store/users"
+import { login } from "../apis/api/user"
 
 const isProd = process.env.NODE_ENV === 'production' ? true : false;
 
@@ -78,21 +81,11 @@ const logoStyle = {
     height: "500px",
 }
 
-const mainStyle = {
+const btnStyle = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    width: "100%",
-    height: "100%",
-}
-
-const posterRowStyle = {
-    height: "50%",
-    padding: "10px"
-}
-
-const movieBox = {
-    height: "50%"
+    color: "black"
 }
 
 const kakaoLogin = async () => {
@@ -105,8 +98,41 @@ const toMain = () => {
 }
 
 function Loginpage() {
+    const email = useStore((state) => state.email);
+    const password = useStore((state) => state.password);
+    const setEmail = useStore((state) => state.setEmail);
+    const setPassword = useStore((state) => state.setPassword);
     const [cookies, setCookie, removeCookie] = useCookies(['userInfo']);
     let params = new URLSearchParams(window.location.search);
+
+    const goLogin = async () => {
+        const response = await login({
+            email: email,
+            password: password
+        });
+        if (response.code === 500) {
+            alert("존재하지 않거나, 잘못된 정보를 입력하였습니다.");
+            return;
+        }
+        setCookie('userInfo', {
+            thumb: response.data.profileImage,
+            name: response.data.name,
+            email: response.data.email,
+            token: response.data.token,
+            platformType: response.data.platformType,
+            expireTime: response.data.expireTime,
+        });
+        window.location.href = "/main";
+    }
+
+    const changeId = (e) => {
+        setEmail(e.target.value);
+    }
+
+    const changePwd = (e) => {
+        setPassword(e.target.value);
+    }
+
     if (params.get('token') !== null) {
         let token = params.get('token');
         console.log(`token: ${params}`);
@@ -118,7 +144,6 @@ function Loginpage() {
             platformType: params.get('platformType'),
             expireTime: params.get('expireTime')
         });
-        // 꼼수 - 컴포넌트 이벤트에 괄호를 넣으면 렌더링 되는 즉시 실행.
         return (
             <div onClick={toMain()}>
                 로딩중...
@@ -133,11 +158,11 @@ function Loginpage() {
                         <Card style={cardStyle}>
                             <div style={rowStyle}>
                                 <div style={inputboxStyle}>
-                                    <InputGroupComponent placeholder="ID"></InputGroupComponent>
-                                    <InputGroupComponent placeholder="PWD"></InputGroupComponent>
+                                    <input placeholder="ID" onChange={changeId}></input>
+                                    <input type="password" placeholder="PWD" onChange={changePwd}></input>
                                 </div>
                                 <div style={buttonboxStyle}>
-                                    <ButtonComponent btn_text="로그인" btn_link="/main" /><br />
+                                    <Button type='button' style={btnStyle} onClick={goLogin}>로그인</Button>
                                 </div>
                             </div>
                             <div style={colStyle}>

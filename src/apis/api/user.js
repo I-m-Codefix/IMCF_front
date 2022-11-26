@@ -25,7 +25,7 @@ export const review = async (data) => {
 
 // 로그인
 export const login = async (data) => {
-    const res = await Axios.post('/login', data);
+    const res = await Axios.post('/login/oauth2/service', data);
     return res;
 }
 

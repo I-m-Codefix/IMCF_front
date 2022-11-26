@@ -1,10 +1,11 @@
 import { FormControl, InputGroup } from "react-bootstrap";
 import "../styles/Components/inputComponent.scss"
 
-export default function InputGroupComponent(props) {
+ const InputGroupComponent = (props) => {
     return (
         <InputGroup className="mb-3">
             <FormControl
+                type= { props.type }
                 placeholder = { props.placeholder }
                 aria-label = "Username"
                 aria-describedby = "basic-addon1"
@@ -12,3 +13,10 @@ export default function InputGroupComponent(props) {
         </InputGroup>
     )
 }
+
+InputGroupComponent.defaultProps = {
+    placeholder: '',
+    type: 'text'
+}
+
+export default InputGroupComponent;
