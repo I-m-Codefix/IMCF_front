@@ -29,7 +29,7 @@ export default function Playscreen_windowpage() {
             <div className="video_wrapper">
                 <ReactPlayer
                     className="react-player"
-                    url={data != undefined ? data.playUri : ""}
+                    url={data !== undefined ? data.playUri : ""}
                     width="100%"
                     height="100%"
                     controls={true}
