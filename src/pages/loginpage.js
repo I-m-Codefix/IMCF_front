@@ -1,11 +1,9 @@
 import React from 'react';
 import { Axios } from "../apis/utils/index";
 import { useCookies } from 'react-cookie';
-
 import bg from "../assets/image/bg1.jpg";
 import logo from "../assets/logo/logo_transparent.png";
 import kakao from "../assets/image/kakao_login_medium_wide.png";
-
 import ButtonComponent from "../components/buttoncomponent";
 import InputGroupComponent from "../components/inputgroupcomponent";
 import { Card } from "react-bootstrap";

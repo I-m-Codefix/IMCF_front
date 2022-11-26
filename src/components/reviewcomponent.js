@@ -3,6 +3,7 @@ import InputGroupComponent from "../components/inputgroupcomponent";
 import { useQuery } from "react-query";
 import { useCookies } from 'react-cookie';
 import Subreviewcomponent from "./Subreviewcomponent";
+import useStore from "../store/manager";
 import { useEffect } from "react";
 
 const mainStyle = {
@@ -164,7 +165,7 @@ export default function ReviewComponent(props) {
                     <InputGroupComponent placeholder="리뷰작성"></InputGroupComponent>
                 </div>
                 <div style={buttonboxStyle}>
-                    <ButtonComponent btn_text="작성" />
+                    <ButtonComponent btn_text="작성" btn_link={'/service/ott/comment'}/>
                 </div>
             </div>
         </div>

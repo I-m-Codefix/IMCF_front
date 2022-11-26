@@ -17,6 +17,12 @@ export const loadUser = async () => {
     return data;
 }
 
+// 댓글작성
+export const review = async (data) => {
+    const res = await Axios.post('/service/ott/comment', data);
+    return res;
+}
+
 // 로그인
 export const login = async (data) => {
     const res = await Axios.post('/login', data);
