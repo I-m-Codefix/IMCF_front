@@ -7,7 +7,6 @@ import ButtonComponent from "../components/buttoncomponent";
 import TabContentTitle from "../components/tabcontenttitle";
 import { useParams } from "react-router";
 import { loadMovieData, loadMovieComment } from '../apis/api/movie';
-import { review } from '../apis/api/user';
 import { useQueries } from "react-query";
 import ReviewComponent from "../components/reviewcomponent";
 

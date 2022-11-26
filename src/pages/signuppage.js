@@ -1,10 +1,9 @@
-import { Card, Form } from "react-bootstrap";
+import { Card, Form, Button } from "react-bootstrap";
 import ButtonComponent from "../components/buttoncomponent";
 import InputGroupComponent from "../components/inputgroupcomponent";
 import bg from "../assets/image/bg1.jpg";
 import useStore from "../store/manager";
 import React, { useState, useEffect } from "react";
-import { Button } from "react-bootstrap";
 
 const bgStyle = {
     width: "100%",

@@ -47,6 +47,17 @@ const colStyle = {
 }
 
 const inputboxStyle = {
+    border: "1px solid gray",
+    borderRadius: "8px",
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "0 10px"
+}
+
+const inputboxgroupStyle = {
     display: "flex",
     flexDirection: "column",
     width: "70%",
@@ -156,9 +167,9 @@ function Loginpage() {
                         <img src={logo} style={logoStyle} />
                         <Card style={cardStyle}>
                             <div style={rowStyle}>
-                                <div style={inputboxStyle}>
-                                    <input placeholder="ID" onChange={ (e) => changeId(e) }></input>
-                                    <input type="password" placeholder="PWD" onChange={ (e) => changePwd(e) }></input>
+                                <div style = {inputboxgroupStyle}>
+                                    <input style={inputboxStyle} placeholder="ID" onChange={ (e) => changeId(e) }></input>
+                                    <input style={inputboxStyle} type="password" placeholder="PWD" onChange={ (e) => changePwd(e) }></input>
                                 </div>
                                 <div style={buttonboxStyle}>
                                     <Button type='button' style={btnStyle} onClick={goLogin}>로그인</Button>

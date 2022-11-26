@@ -3,7 +3,9 @@ import InputGroupComponent from "../components/inputgroupcomponent";
 import { useQuery } from "react-query";
 import { useCookies } from 'react-cookie';
 import Subreviewcomponent from "./Subreviewcomponent";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { review } from '../apis/api/user';
+import { Card, Form, Button } from "react-bootstrap";
 
 const mainStyle = {
     display: "flex",
@@ -46,17 +48,29 @@ const editCommentStyle = {
 }
 
 const inputboxStyle = {
+    border: "1px solid gray",
+    borderRadius: "8px",
     display: "flex",
     flexDirection: "column",
-    width: "70%",
-    height: "100%",
+    width: "100%",
+    height: "85%",
     alignItems: "center",
     justifyContent: "center",
-    padding: "0 10px"
+}
+
+const inputboxgroupStyle = {
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "0 5px"
 }
 
 const buttonboxStyle = {
     display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     width: "30%",
     height: "100%"
 }
@@ -88,6 +102,14 @@ const profileName = {
 const boxStyle = {
     width: "100%",
     height: "auto",
+}
+
+const btnStyle = {
+    height: "80%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    color: "black"
 }
 
 const reviewList = (reviewData) => {
@@ -152,19 +174,51 @@ const reviewList = (reviewData) => {
 }
 
 export default function ReviewComponent(props) {
-    const [cookies, getCookies, removeCookie] = useCookies(['userInfo']);
+    const [cookies, setCookie, getCookies, removeCookie] = useCookies(['userInfo']);
     const token = cookies.userInfo.token;
+    const [ content, setContent] = useState(props);
+    const [ parent, setParent] = useState(props);
+    const [ writer, setWriter] = useState(props);
+    const [ streaming, setStreaming] = useState(props);
+    const changeId = (e) => {
+        e.preventDefault();
+        content(e.target.value);
+    }
+    const refreshFunction=( newContent )=>{
+        setContent(props.movieComment.concat(newContent) )
+    }
+    const creatReview = async () => {
+        const response = await review({
+            content : content,
+            parent : parent,
+            writer : writer,
+            streaming : streaming,
+        });
+        if (response.code === 500) {
+            alert("존재하지 않거나, 잘못된 정보를 입력하였습니다.");
+            return;
+        }
+        setCookie('userInfo', {
+            thumb: response.data.profileImage,
+            name: response.data.name,
+            email: response.data.email,
+            token: response.data.token,
+            platformType: response.data.platformType,
+            expireTime: response.data.expireTime,
+        });
+    }
     return (
         <div style={mainStyle}>
             <div style={reviewListStyle}>
                 {reviewList(props.movieComment)}
+                {/* {reviewList(setContent)} */}
             </div>
             <div style={editCommentStyle}>
-                <div style={inputboxStyle}>
-                    <InputGroupComponent placeholder="리뷰작성"></InputGroupComponent>
+                <div style={inputboxgroupStyle}>
+                    <input style={inputboxStyle} placeholder="리뷰작성" onChange={ (e) => changeId(e) }/>
                 </div>
                 <div style={buttonboxStyle}>
-                    <ButtonComponent btn_text="작성" btn_link={'/service/ott/comment'}/>
+                    <Button style={btnStyle} onClick={creatReview} >작성</Button>
                 </div>
             </div>
         </div>
