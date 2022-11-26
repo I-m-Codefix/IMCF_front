@@ -71,14 +71,17 @@ function Signuppage() {
     let isPolicy = policy;
 
     const changeName = (e) => {
+        e.preventDefault();
         setName(e.target.value);
     }
 
     const changeEmail = (e) => {
+        e.preventDefault();
         setEmail(e.target.value);
     }
 
     const changePassword = (e) => {
+        e.preventDefault();
         setPassword(e.target.value);
     }
 
