@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Axios } from "../apis/utils/index";
 import { useCookies } from 'react-cookie';
 import { Button } from "react-bootstrap";
@@ -8,7 +8,6 @@ import logo from "../assets/logo/logo_transparent.png";
 import kakao from "../assets/image/kakao_login_medium_wide.png";
 import ButtonComponent from "../components/buttoncomponent";
 import { Card } from "react-bootstrap";
-import useStore from "../store/users"
 import { login } from "../apis/api/user"
 
 const isProd = process.env.NODE_ENV === 'production' ? true : false;
@@ -98,10 +97,8 @@ const toMain = () => {
 }
 
 function Loginpage() {
-    const email = useStore((state) => state.email);
-    const password = useStore((state) => state.password);
-    const setEmail = useStore((state) => state.setEmail);
-    const setPassword = useStore((state) => state.setPassword);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [cookies, setCookie, removeCookie] = useCookies(['userInfo']);
     let params = new URLSearchParams(window.location.search);
 

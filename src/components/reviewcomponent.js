@@ -3,8 +3,7 @@ import InputGroupComponent from "../components/inputgroupcomponent";
 import { useQuery } from "react-query";
 import { useCookies } from 'react-cookie';
 import Subreviewcomponent from "./Subreviewcomponent";
-import useStore from "../store/manager";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
 const mainStyle = {
     display: "flex",
