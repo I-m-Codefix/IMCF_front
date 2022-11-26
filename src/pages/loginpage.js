@@ -127,10 +127,12 @@ function Loginpage() {
     }
 
     const changeId = (e) => {
+        e.preventDefault();
         setEmail(e.target.value);
     }
 
     const changePwd = (e) => {
+        e.preventDefault();
         setPassword(e.target.value);
     }
 
@@ -159,8 +161,8 @@ function Loginpage() {
                         <Card style={cardStyle}>
                             <div style={rowStyle}>
                                 <div style={inputboxStyle}>
-                                    <input placeholder="ID" onChange={changeId}></input>
-                                    <input type="password" placeholder="PWD" onChange={changePwd}></input>
+                                    <input placeholder="ID" onChange={ (e) => changeId(e) }></input>
+                                    <input type="password" placeholder="PWD" onChange={ (e) => changePwd(e) }></input>
                                 </div>
                                 <div style={buttonboxStyle}>
                                     <Button type='button' style={btnStyle} onClick={goLogin}>로그인</Button>

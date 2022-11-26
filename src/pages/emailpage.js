@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
 import { Card } from "react-bootstrap";
 import ButtonComponent from "../components/buttoncomponent";
-import InputGroupComponent from "../components/inputgroupcomponent";
 import { useLocation } from "react-router";
-import useStore from "../store/manager";
 import bg from "../assets/image/bg1.jpg";
 import { useQuery } from "react-query";
 import { signup } from "../apis/api/user";
