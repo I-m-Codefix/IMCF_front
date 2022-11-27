@@ -177,7 +177,6 @@ const reviewList = (reviewData) => {
 
 export default function ReviewComponent(props) {
     const movieNum = useParams();
-    const movieId = parseInt(movieNum.movieId);
     const [cookies, setCookie, getCookies, removeCookie] = useCookies(['userInfo']);
     const [content, setContent] = useState("");
     const token = cookies.userInfo.token;
