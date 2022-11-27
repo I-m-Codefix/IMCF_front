@@ -1,12 +1,13 @@
 import ButtonComponent from "../components/buttoncomponent";
 import InputGroupComponent from "../components/inputgroupcomponent";
-import { useQuery } from "react-query";
+import { useQueries , useQuery } from "react-query";
 import { useCookies } from 'react-cookie';
 import Subreviewcomponent from "./Subreviewcomponent";
 import React, { useEffect, useState } from "react";
 import { review, loadUser } from '../apis/api/user';
 import { Card, Form, Button } from "react-bootstrap";
 import { useParams } from "react-router";
+import { element, number } from "prop-types";
 
 const mainStyle = {
     display: "flex",
@@ -176,41 +177,34 @@ const reviewList = (reviewData) => {
 
 export default function ReviewComponent(props) {
     const movieNum = useParams();
+    const movieId = parseInt(movieNum.movieId);
     const [cookies, setCookie, getCookies, removeCookie] = useCookies(['userInfo']);
+    const [content, setContent] = useState("");
     const token = cookies.userInfo.token;
-    const user =  useQuery([loadUser(token)]);("");
-    const [ content, setContent] = useState("");
-    console.log(" : ",props);
     const changeContent = (e) => {
         e.preventDefault();
         setContent(e.target.value);
     }
-    // setParent(null);
-    // setWriter(user.id)
-    // setStreaming(movieNum.movieId)
-    //
-    // const refreshFunction = ( newContent )=>{
-    //     setContent(props.movieComment.concat(newContent))
-    // }
-    //
-    const creatReview = async () => {
-        const response = await review(
-        token,
-        {
-            content : content,
-            parent : null,
-            writer : {
-                id : user.id
-            },
-            streaming : {
-                id : movieNum.movieId
-            }
+    const creatReview = () => {
+        loadUser(token).then(async (userId) => {
+            const response = await review(
+                token,
+                {
+                    content : content,
+                    parent : null,
+                    writer : {
+                        id : userId
+                    },
+                    streaming : {
+                        id : movieNum.movieId
+                    }
+                });
+                if (response.code === 500) {
+                    alert("쯧쯧");
+                    return;
+                }
+                window.location.reload();
         });
-        if (response.code === 500) {
-            alert("쯧쯧");
-            return;
-        }
-        window.location.reload();
     }
     return (
         <div style={mainStyle}>

@@ -14,20 +14,18 @@ export const signup = async (userData) => {
 // 유저 정보 가져오기
 export const loadUser = async (token) => {
     //console.log("token = ", token);
-    const res = await Axios.get(`/account/info`, {
+    console.log("로드유저 발동!");
+    const res = await Axios.get('/account/info', {
         headers: {
             Authorization: token
         }
     });
     if (res.data.code === 200) {
-        return res.data.result;
+        return res.data.id;
     } else {
-        return res.data;
+        return res.data.id;
     }
 }
-
-
-
 
 // 댓글작성
 export const review = async (token, data) => {
