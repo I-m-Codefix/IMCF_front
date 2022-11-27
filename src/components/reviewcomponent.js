@@ -180,26 +180,14 @@ export default function ReviewComponent(props) {
     const token = cookies.userInfo.token;
     const user =  useQuery([loadUser(token)]);("");
     const [ content, setContent] = useState("");
-    const [ parent, setParent] = useState("");
-    const [ writer, setWriter] = useState("");
-    const [ streaming, setStreaming] = useState("");
     console.log(" : ",props);
     const changeContent = (e) => {
         e.preventDefault();
         setContent(e.target.value);
     }
-    const changeParent = (e) => {
-        e.preventDefault();
-        setParent(null);
-    }
-    const changeWriter = (e) => {
-        e.preventDefault();
-        setWriter(user.id)
-    }
-    const changeStreaming = (e) => {
-        e.preventDefault();
-        setStreaming(movieNum.movieId)
-    }
+    // setParent(null);
+    // setWriter(user.id)
+    // setStreaming(movieNum.movieId)
     //
     // const refreshFunction = ( newContent )=>{
     //     setContent(props.movieComment.concat(newContent))
@@ -210,9 +198,13 @@ export default function ReviewComponent(props) {
         token,
         {
             content : content,
-            parent : parent,
-            writer : writer,
-            streaming : streaming,
+            parent : null,
+            writer : {
+                id : user.id
+            },
+            streaming : {
+                id : movieNum.movieId
+            }
         });
         if (response.code === 500) {
             alert("쯧쯧");
