@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 import { useCookies } from 'react-cookie';
 import Subreviewcomponent from "./Subreviewcomponent";
 import React, { useEffect, useState } from "react";
-import { review } from '../apis/api/user';
+import { review, loadUser } from '../apis/api/user';
 import { Card, Form, Button } from "react-bootstrap";
 import { useParams } from "react-router";
 
@@ -178,16 +178,25 @@ export default function ReviewComponent(props) {
     const movieNum = useParams();
     const [cookies, setCookie, getCookies, removeCookie] = useCookies(['userInfo']);
     const token = cookies.userInfo.token;
+    const user =  useQuery([loadUser(token)]);("");
     const [ content, setContent] = useState("");
     const [ parent, setParent] = useState("");
     const [ writer, setWriter] = useState("");
     const [ streaming, setStreaming] = useState("");
-    console.log("토큰 : ",props);
-    const changecontent = (e) => {
+    console.log(" : ",props);
+    const changeContent = (e) => {
         e.preventDefault();
         setContent(e.target.value);
     }
-    const changestreaming = (e) => {
+    const changeParent = (e) => {
+        e.preventDefault();
+        setParent(null);
+    }
+    const changeWriter = (e) => {
+        e.preventDefault();
+        setWriter(user.id)
+    }
+    const changeStreaming = (e) => {
         e.preventDefault();
         setStreaming(movieNum.movieId)
     }
@@ -209,14 +218,7 @@ export default function ReviewComponent(props) {
             alert("쯧쯧");
             return;
         }
-        setCookie('userInfo', {
-            thumb: response.data.profileImage,
-            name: response.data.name,
-            email: response.data.email,
-            token: response.data.token,
-            platformType: response.data.platformType,
-            expireTime: response.data.expireTime,
-        });
+        window.location.reload();
     }
     return (
         <div style={mainStyle}>
@@ -226,10 +228,10 @@ export default function ReviewComponent(props) {
             </div>
             <div style={editCommentStyle}>
                 <div style={inputboxgroupStyle}>
-                    <input style={inputboxStyle} placeholder="리뷰작성" onChange={ (e) => changecontent(e) }/>
+                    <input style={inputboxStyle} placeholder="리뷰작성" onChange={ (e) => changeContent(e) }/>
                 </div>
                 <div style={buttonboxStyle}>
-                    <Button style={btnStyle} onClick={creatReview} >작성</Button>
+                    <Button type="button" style={btnStyle} onClick={creatReview} >작성</Button>
                 </div>
             </div>
         </div>

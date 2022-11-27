@@ -12,10 +12,22 @@ export const signup = async (userData) => {
 }
 
 // 유저 정보 가져오기
-export const loadUser = async () => {
-    const { data } = await Axios.get('/user');
-    return data;
+export const loadUser = async (token) => {
+    //console.log("token = ", token);
+    const res = await Axios.get(`/account/info`, {
+        headers: {
+            Authorization: token
+        }
+    });
+    if (res.data.code === 200) {
+        return res.data.result;
+    } else {
+        return res.data;
+    }
 }
+
+
+
 
 // 댓글작성
 export const review = async (token, data) => {
@@ -26,6 +38,7 @@ export const review = async (token, data) => {
     });
     return res;
 }
+
 
 // 로그인
 export const login = async (data) => {
