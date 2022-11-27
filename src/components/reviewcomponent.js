@@ -210,7 +210,6 @@ export default function ReviewComponent(props) {
         <div style={mainStyle}>
             <div style={reviewListStyle}>
                 {reviewList(props.movieComment)}
-                {/* {reviewList(setContent)} */}
             </div>
             <div style={editCommentStyle}>
                 <div style={inputboxgroupStyle}>
